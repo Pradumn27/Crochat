@@ -11,6 +11,16 @@ export default function Chat() {
             </div>
             <div className="messages">
                 <Message/>
+                <Message cl="mess_reciever"/>
+                <Message/>
+                <Message cl="mess_reciever"/>
+                <Message cl="mess_reciever"/>
+                <Message/>
+                <Message/>
+                <Message/>
+                <Message cl="mess_reciever"/>
+                <Message/>
+                <Message cl="mess_reciever"/>
             </div>
             <div className="chatfooter">
                 <EmojiEmotionsOutlinedIcon/>
