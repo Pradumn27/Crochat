@@ -125,9 +125,15 @@
 }
 
 .chatheader{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
     height: 60px;
     padding: 10px;
-    background-color: green;
+    background-color: rgb(208, 216, 208);
+}
+.calls>.MuiSvgIcon-root{
+    margin: 10px;
 }
 
 .chatfooter{
@@ -158,6 +164,7 @@
     scrollbar-width: 10px;
     -ms-overflow-style: none;
     position: relative;
+    background-color: rgb(247, 236, 236);
 }
 .message{
     margin-left: auto;
@@ -198,7 +205,7 @@
     height: 50px;
     background:#ECEFF1;
     border-radius: 40px;
-    box-shadow: 10px 10px rgba(0,0,0,0.2);
+    box-shadow: 10px 10px rgba(0,0,0,0.1);
     position: relative;
     display: flex;
     align-items: center;
