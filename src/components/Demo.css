@@ -4,11 +4,12 @@
 }
 
 .enter {
-  z-index: 2;
+  z-index: 3;
   position: absolute;
   height: 100%;
   width: 100%;
   overflow: hidden;
+  animation: change 5s forwards;
 }
 
 .img-1 {
@@ -38,5 +39,13 @@
   10%{transform: translateX(0px);}
   100% {
     transform: translateX(770px);
+  }
+}
+@keyframes change {
+  99%{
+    z-index: 2;
+  }
+  100%{
+    z-index: -1;
   }
 }
