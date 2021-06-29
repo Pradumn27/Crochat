@@ -1,0 +1,42 @@
+
+.wow{
+  position: relative;
+}
+
+.enter {
+  z-index: 2;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.img-1 {
+  width: 50%;
+  height: 100%;
+  animation: open1 5s ease-out forwards;
+}
+.img-2 {
+  width: 50%;
+  height: 100%;
+  animation: open2 5s ease-out forwards;
+}
+
+@keyframes open1 {
+  0% {
+    transform: translateX(0px);
+  }
+  10%{transform: translateX(0px);}
+  100% {
+    transform: translateX(-770px);
+  }
+}
+@keyframes open2 {
+  0% {
+    transform: translateX(0px);
+  }
+  10%{transform: translateX(0px);}
+  100% {
+    transform: translateX(770px);
+  }
+}

@@ -4,24 +4,3 @@
   box-sizing: border-box;
   /* overflow: hidden; */
 }
-
-.components {
-  display: flex;
-  margin-top: 13vh;
-  height: 77vh;
-}
-
-.main {
-  height: 100vh;
-  width: 100vw;
-  background-color: rgb(224, 219, 219);
-  display: grid;
-  place-items: center;
-}
-.andar {
-  display: flex;
-  flex-direction: column;
-  height: 90vh;
-  width: 90vw;
-  box-shadow: -1px 4px 20px -6px rgba(0, 0, 0, 7);
-}
