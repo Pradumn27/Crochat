@@ -2,6 +2,7 @@ import React from 'react'
 import SideNav from './SideNav'
 import SideChat from './SideChat'
 import { SearchOutlined } from '@material-ui/icons'
+import "./SideBar.css"
 
 export default function SideBar() {
     return (

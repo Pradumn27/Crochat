@@ -1,0 +1,64 @@
+.message {
+    margin-left: auto;
+    margin-right: 25px;
+    padding: 15px;
+    width: fit-content;
+}
+.message > h2 {
+    font-size: 15px;
+    margin-bottom: 2px;
+    padding-left: 21px;
+}
+  
+.mess_reciever {
+  margin-right: auto;
+  margin-left: 25px;
+  padding: 15px;
+  width: fit-content;
+}
+.mess_reciever > .mess {
+  background: rgb(70, 204, 182);
+}
+.mess_reciever > h2 {
+  font-size: 15px;
+  margin-bottom: 2px;
+  padding-left: 21px;
+}
+.mess > h5 {
+  position: absolute;
+  bottom: 0px;
+  right: 10px;
+  font-size: 10px;
+}
+
+.mess {
+  width: justify-content;
+  height: 50px;
+  background: #eceff1;
+  border-radius: 40px;
+  box-shadow: 10px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid skyblue;
+  padding: 15px;
+}
+
+.mess > p {
+  line-height: 0px;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  height: 82%;
+  overflow-y: scroll;
+  box-sizing: content-box; /*Hidding ScrollBar*/
+  scrollbar-width: 10px;
+  -ms-overflow-style: none;
+  position: relative;
+  background-color: rgb(247, 236, 236);
+}
+

@@ -4,6 +4,7 @@ import ContactsIcon from '@material-ui/icons/Contacts';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Avatar } from '@material-ui/core';
+import "./SideBar.css"
 export default function SideNav() {
     return (
         <div className="sidenav">

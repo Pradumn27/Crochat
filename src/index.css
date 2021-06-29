@@ -1,226 +1,27 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    /* overflow: hidden; */
-}
-#header{
-    position: absolute;
-    height:13vh;
-    width: 90vw;
-    display: grid;
-    place-items: center;
-    background-color: rgba(7, 7, 7, 0.582);
-    color: rgb(138, 99, 40);
-}
-#header>img{
-    height:70px;
-}
-.components{
-    display: flex;
-    margin-top:13vh;
-    height: 77vh;
-}
-.sidebar{
-    flex: 0.35;
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(228, 225, 225);
-}
-.main{
-    height: 100vh;
-    width: 100vw;
-    background-color: rgb(224, 219, 219);
-    display: grid;
-    place-items: center;
-}
-.andar{
-    display: flex;
-    flex-direction: column;
-    height: 90vh;
-    width: 90vw;
-    box-shadow: -1px 4px 20px -6px rgba(0, 0, 0, 7);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* overflow: hidden; */
 }
 
-.sidenav{
-    display: flex;
-    padding: 10px;
-    justify-content: space-between;
-    background-color: rgb(207, 209, 214);
-    border-right:1px solid lightgray;
+.components {
+  display: flex;
+  margin-top: 13vh;
+  height: 77vh;
 }
 
-.icons>.MuiSvgIcon-root{
-    margin-left: 10px;
+.main {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(224, 219, 219);
+  display: grid;
+  place-items: center;
 }
-
-.chat{
-    flex:0.65;
+.andar {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  width: 90vw;
+  box-shadow: -1px 4px 20px -6px rgba(0, 0, 0, 7);
 }
-
-.sidebar_search{
-    display: flex;
-    align-items: center;
-    background-color: #f6f6f6;
-    height: 39px;
-    padding: 10px;
-}
-
-.sidebar_search_cont{
-    display: flex;
-    align-items: center;
-    background-color: white;
-    width: 100%;
-    height: 35px;
-    border-radius: 20px;
-}
-
-.sidebar_search_cont>.MuiSvgIcon-root{
-    color: gray;
-}
-
-.sidebar_search_cont>input{
-    border:none;
-    outline-width: 0;
-    width: 100%;
-    margin-left: 10px;
-}
-
-.sidechat{
-    padding: 20px;
-    display: flex;
-    cursor: pointer;
-    align-items: center;
-}
-
-.sidechat:hover{
-    border-bottom: 1px solid silver;
-}
-
-.names>p{
-    cursor: pointer;
-    line-height: 0px;
-}
-.names>h4{
-    cursor: pointer;
-}
-.names{
-    margin-left: 10px;
-}
-
-.sidechats{
-    overflow-y: scroll;
-    box-sizing: content-box;/*Hidding ScrollBar*/
-    scrollbar-width: 10px;
-    -ms-overflow-style: none;
-}
-.sidechats::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-}
-.chat{
-    display: flex;
-    flex-direction: column;
-    position: relative;
-}
-
-.chatheader{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    height: 60px;
-    padding: 10px;
-    background-color: rgb(208, 216, 208);
-}
-.calls>.MuiSvgIcon-root{
-    margin: 10px;
-}
-
-.chatfooter{
-    display: flex;
-    align-items: center;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    justify-content: center;
-    padding: 10px;
-    background-color: #f6f6f6;
-}
-
-.chatfooter>input{
-    margin-left: 10px;
-    width: 90%;
-    margin-right: 5px;
-    border:none;
-    outline-width: 0;
-}
-
-.messages{
-    display: flex;
-    flex-direction: column;
-    height: 82%;
-    overflow-y: scroll;
-    box-sizing: content-box;/*Hidding ScrollBar*/
-    scrollbar-width: 10px;
-    -ms-overflow-style: none;
-    position: relative;
-    background-color: rgb(247, 236, 236);
-}
-.message{
-    margin-left: auto;
-    margin-right: 25px;
-    padding: 15px;
-    width: fit-content;
-}
-.message>h2{
-    font-size: 15px;
-    margin-bottom: 2px;
-    padding-left: 21px;
-}
-
-.mess_reciever{
-    margin-right: auto;
-    margin-left: 25px;
-    padding: 15px;
-    width: fit-content;
-}
-.mess_reciever>.mess{
-    background: rgb(70, 204, 182);
-}
-.mess_reciever>h2{
-    font-size: 15px;
-    margin-bottom: 2px;
-    padding-left: 21px;
-}
-.mess>h5{
-    position: absolute;
-    bottom: 0px;
-    right: 10px;
-    font-size: 10px;
-    /* line-height: 0px; */
-}
-
-.mess{
-    width:justify-content;
-    height: 50px;
-    background:#ECEFF1;
-    border-radius: 40px;
-    box-shadow: 10px 10px rgba(0,0,0,0.1);
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    border: 1px solid skyblue;
-    padding: 15px;
-}
-
-.mess>p{
-    /* border:1px solid black; */
-    line-height: 0px;
-}
-
-
-
-
-

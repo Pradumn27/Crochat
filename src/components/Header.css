@@ -1,0 +1,12 @@
+#header{
+    position: absolute;
+    height:13vh;
+    width: 90vw;
+    display: grid;
+    place-items: center;
+    background-color: rgba(7, 7, 7, 0.582);
+    color: rgb(138, 99, 40);
+}
+#header>img{
+    height:70px;
+}

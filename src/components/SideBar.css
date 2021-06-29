@@ -1,0 +1,81 @@
+.sidebar {
+  flex: 0.35;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(228, 225, 225);
+}
+
+.sidebar_search {
+  display: flex;
+  align-items: center;
+  background-color: #f6f6f6;
+  height: 39px;
+  padding: 10px;
+}
+
+.sidebar_search_cont {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  width: 100%;
+  height: 35px;
+  border-radius: 20px;
+}
+
+.sidebar_search_cont > .MuiSvgIcon-root {
+  color: gray;
+}
+
+.sidebar_search_cont > input {
+  border: none;
+  outline-width: 0;
+  width: 100%;
+  margin-left: 10px;
+}
+
+.sidechat {
+  padding: 20px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+}
+
+.sidechat:hover {
+  border-bottom: 1px solid silver;
+}
+
+.sidechats {
+  overflow-y: scroll;
+  box-sizing: content-box; /*Hidding ScrollBar*/
+  scrollbar-width: 10px;
+  -ms-overflow-style: none;
+}
+.sidechats::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.sidenav {
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+  background-color: rgb(207, 209, 214);
+  border-right: 1px solid lightgray;
+}
+
+.names > p {
+  cursor: pointer;
+  line-height: 0px;
+}
+
+.names > h4 {
+  cursor: pointer;
+}
+
+.names {
+  margin-left: 10px;
+}
+
+.icons > .MuiSvgIcon-root {
+  margin-left: 10px;
+}

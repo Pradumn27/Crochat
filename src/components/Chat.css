@@ -1,0 +1,48 @@
+.chat{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    flex:0.65;
+}
+
+.chatheader{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    padding: 10px;
+    background-color: rgb(208, 216, 208);
+}
+.calls>.MuiSvgIcon-root{
+    margin: 10px;
+}
+
+.chatfooter{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    justify-content: center;
+    padding: 10px;
+    background-color: #f6f6f6;
+}
+
+
+
+.chatfooter>form>.inp{
+    margin-left: 10px;
+    width: 90%;
+    margin-right: 5px;
+    border:none;
+    outline-width: 0;
+}
+
+.chatfooter > form{
+    flex: 1;
+    display: flex;
+}
+
+.chatfooter>form>.but{
+    display: none;
+}

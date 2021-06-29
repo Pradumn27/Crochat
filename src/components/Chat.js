@@ -1,10 +1,16 @@
-import React from 'react'
+import React,{useState} from 'react'
 import EmojiEmotionsOutlinedIcon from '@material-ui/icons/EmojiEmotionsOutlined';
 import { Call, Mic, VideoCall } from '@material-ui/icons';
 import Message from "./Message"
+import "./Chat.css"
 import { Avatar } from '@material-ui/core';
 
 export default function Chat() {
+    const [inp,setInp]=useState('');
+    const sendMessage = (e) =>{
+        e.preventDefault();
+        setInp("");
+    }
     return (
         <div className="chat">
             <div className="chatheader">
@@ -30,7 +36,10 @@ export default function Chat() {
             </div>
             <div className="chatfooter">
                 <EmojiEmotionsOutlinedIcon/>
-                <input placeholder="type message..." type="text"></input>
+                <form>
+                <input class="inp" placeholder="type message..."  value={inp} onChange={(e)=>{setInp(e.target.value)}} type="text"></input>
+                <button class="but" onClick={sendMessage} type="submit"> Send a Message</button>
+                </form>
                 <Mic/>
             </div>
         </div>
