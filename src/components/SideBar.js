@@ -1,13 +1,28 @@
-import React from 'react'
-import SideNav from './SideNav'
-import SideChat from './SideChat'
-import { SearchOutlined } from '@material-ui/icons'
-import "./SideBar.css"
+import React, { useState, useEffect } from "react";
+import SideNav from "./SideNav";
+import SideChat from "./SideChat";
+import { SearchOutlined } from "@material-ui/icons";
+import "./SideBar.css";
+import db from "../Firebase";
 
 export default function SideBar() {
+    const [rooms, setRooms] = useState([]);
+    useEffect(() => {
+        const data = db.collection("rooms").onSnapshot((snapshot) =>
+            setRooms(
+                snapshot.docs.map((doc) => ({
+                    id: doc.id,
+                    data: doc.data()
+                }))
+            )
+        );
+        return () => {
+            data();
+        };
+    }, []);
     return (
         <div className="sidebar">
-            <SideNav/>
+            <SideNav />
             <div className="sidebar_search">
                 <div className="sidebar_search_cont">
                     <SearchOutlined />
@@ -15,14 +30,10 @@ export default function SideBar() {
                 </div>
             </div>
             <div className="sidechats">
-                <SideChat />
-                <SideChat />
-                <SideChat />
-                <SideChat />
-                <SideChat />
-                <SideChat />
-                <SideChat />
+                {rooms.map((room) => {
+                    return <SideChat key={room.id} id={room.id} name={room.data.name} />;
+                })}
             </div>
         </div>
-    )
+    );
 }

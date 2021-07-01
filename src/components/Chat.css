@@ -17,6 +17,18 @@
     margin: 10px;
 }
 
+.messages {
+    display: flex;
+    flex-direction: column;
+    height: 82%;
+    overflow-y: scroll;
+    box-sizing: content-box; /*Hidding ScrollBar*/
+    scrollbar-width: 10px;
+    -ms-overflow-style: none;
+    position: relative;
+    background-color: rgb(247, 236, 236);
+}
+  
 .chatfooter{
     display: flex;
     align-items: center;

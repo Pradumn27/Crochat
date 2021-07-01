@@ -1,3 +1,4 @@
+import firebase from "firebase";
 const firebaseConfig = {
     apiKey: "AIzaSyAezAcp8p00uITQP9HFKGpsstSjUjtdEm8",
     authDomain: "crochat-22721.firebaseapp.com",

@@ -1,9 +1,12 @@
 import MainPage from "./MainPage";
-
+import {useStateValue} from './StateReducer/StateProvider';
+import Login from "./Auth/Login"
 function App() {
+  const [{user},dispatch] = useStateValue()
   return (
     <div >
-      <MainPage/>
+      {!user?<Login/>:
+      <MainPage/>}
     </div>
   );
 }

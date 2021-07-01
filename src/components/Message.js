@@ -3,10 +3,10 @@ import "./Message.css"
 export default function Message(props) {
     return (
         <div  className={props.cl ? props.cl:"message"}>
-            <h2>Naam</h2>
+            <h2>{props.name}</h2>
             <div className="mess">
-                <p>kya haal hai???ghvgvjdbcjhdujckjdjkdjk</p>
-                <h5>time stamp</h5>
+                <p>{props.message}</p>
+                <h5>{props.timestamp?.toUTCString()}</h5>
             </div>
         </div>
     )

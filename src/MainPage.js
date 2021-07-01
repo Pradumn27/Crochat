@@ -3,6 +3,7 @@ import SideBar from "./components/SideBar";
 import Chat from "./components/Chat";
 import "./MainPage.css"
 import "./components/Demo.css"
+import { BrowserRouter as Router,Switch, Route} from 'react-router-dom';  
 
 function MainPage() {
   return (
@@ -15,12 +16,22 @@ function MainPage() {
       <div className="andar">
         <Header />
         <div className="components">
+          <Router>
           <SideBar />
-          <Chat />
+          <Switch>
+          <Route path="/rooms/:roomId">
+            <Chat />
+          </Route>
+          <Route path="/">
+            <Chat/>
+          </Route>
+          </Switch>
+          </Router>
         </div>
       </div>
     </div>
     </div>
+    
   );
 }
 
