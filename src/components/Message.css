@@ -3,9 +3,10 @@
     margin-right: 25px;
     padding: 15px;
     width: fit-content;
+    /* overflow-wrap: break-word;  */
 }
 .message > h2 {
-    font-size: 15px;
+    font-size: 10px;
     margin-bottom: 2px;
     padding-left: 21px;
 }
@@ -14,13 +15,13 @@
   margin-right: auto;
   margin-left: 25px;
   padding: 15px;
-  width: fit-content;
+  max-width: 300px;
 }
 .mess_reciever > .mess {
   background: rgb(70, 204, 182);
 }
 .mess_reciever > h2 {
-  font-size: 15px;
+  font-size: 10px;
   margin-bottom: 2px;
   padding-left: 21px;
 }
@@ -28,12 +29,10 @@
   position: absolute;
   bottom: 0px;
   right: 10px;
-  font-size: 10px;
+  font-size: 6px;
 }
 
 .mess {
-  width: justify-content;
-  height: 50px;
   background: #eceff1;
   border-radius: 40px;
   box-shadow: 10px 10px rgba(0, 0, 0, 0.1);
@@ -44,8 +43,12 @@
   flex-direction: column;
   border: 1px solid skyblue;
   padding: 15px;
+  max-width: 300px;
 }
 
-.mess > p {
-  line-height: 0px;
+.mess > h3 {
+  /* line-height: 0px; */
+  /* overflow-wrap: break-word; */
+  /* max-width: 200px; */
+  font-size: 15px;
 }

@@ -5,9 +5,9 @@ export default function Message(props) {
         <div  className={props.cl ? props.cl:"message"}>
             <h2>{props.name}</h2>
             <div className="mess">
-                <p>{props.message}</p>
-                <h5>{props.timestamp?.toUTCString()}</h5>
+                <h3>{props.message}</h3>
+                <h5>{props.timestamp?.toUTCString().slice(0,-3)}</h5>
             </div>
-        </div>
+        </div> 
     )
 }

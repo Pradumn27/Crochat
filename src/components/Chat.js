@@ -24,7 +24,10 @@ export default function Chat() {
                 setMessages(snapShot.docs.map(doc=>doc.data()))
             })
         }
+        window.scrollTo(0,document.querySelector(".messages").scrollHeight);
+        console.log(document.querySelector(".messages").scrollHeight);
     },[roomId])
+
     const sendMessage = (e) =>{
         e.preventDefault();
         db.collection('rooms').doc(roomId).collection('messages').add({
@@ -44,7 +47,7 @@ export default function Chat() {
                     <VideoCall/>
                 </div>
             </div>
-            <div className="messages" >
+            <div className="messages" id="ms">
                 {messages.map(message=>{
                     return(<Message name={message?.name}cl={message.name==user.displayName?"message":"mess_reciever"} message={message.message} timestamp={message.timestamp?.toDate()} />
                 )})}

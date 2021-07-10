@@ -85,3 +85,10 @@
   margin-left: 10px;
   cursor: pointer;
 }
+
+
+@media screen and (max-width: 770px){
+  .names>p{
+    display: none;
+  }
+}
