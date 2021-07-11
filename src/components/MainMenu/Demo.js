@@ -3,7 +3,7 @@ import "../MainPage/MainPage.css"
 import "./Demo.css"
 
 function Demo() {
-    return (
+    return( 
         <div className="main">
             <div className="andar">
                 <div className="component">
@@ -171,7 +171,7 @@ function Demo() {
                 </div>
             </div>
         </div>
-    )
+        )
 }
 
 export default Demo

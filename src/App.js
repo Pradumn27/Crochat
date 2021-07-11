@@ -1,14 +1,27 @@
-import {useStateValue} from './StateReducer/StateProvider';
+import Routess from "./routess"
+import { useStateValue } from "./StateReducer/StateProvider"
+import { auth } from './Firebase';
+import { useEffect } from "react"
+import { actionTypes } from './StateReducer/Reducer';
 import Login from "./Auth/Login";
-import Jag from "./routess"
 
 function App() {
-  const [{user},dispatch] = useStateValue()
+  const [{ user }, dispatch] = useStateValue();
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      dispatch({
+        type: actionTypes.SET_USER,
+        user: user,
+      })
+    })
+  });
   return (
-    <div >
-      {!user?<Login/>:
-      <Jag/>}
-    </div>
+    <>
+      {user ? (
+        <div >
+          <Routess />
+        </div>) : <Login />}
+    </>
   );
 }
 

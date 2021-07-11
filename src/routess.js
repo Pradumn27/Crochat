@@ -3,7 +3,7 @@ import Demo from "./components/MainMenu/Demo"
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import MainPage from "./components/MainPage/MainPage";
 
-function Jag() {
+function Routess() {
     return (
         <Router>
             <Switch>
@@ -11,7 +11,7 @@ function Jag() {
                 <Route path="/chat" exact component={MainPage}/>
             </Switch>
         </Router>
-    )
+    ) 
 }
 
-export default Jag
+export default Routess
