@@ -9,10 +9,10 @@ import {useStateValue} from "../StateReducer/StateProvider"
 import db from "../Firebase"
 
 export default function SideNav() {
-    const [{user},dispatch] = useStateValue();
+    const [{user},] = useStateValue();
     const addGroup = () =>{
         const roomName = prompt("Please Enter Name for Chat");
-        if(roomName!=""){
+        if(roomName!==""){
         db.collection("rooms").add({
             name:roomName
         })}

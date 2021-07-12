@@ -6,7 +6,7 @@ import { actionTypes } from '../StateReducer/Reducer';
 import { useStateValue } from '../StateReducer/StateProvider';
 
 function Login() {
-    const [{},dispatch] = useStateValue();
+    const [,dispatch] = useStateValue();
     const signIn = () => {
         auth.setPersistence('local').then(()=>{auth.signInWithPopup(provider)
             .then((result) => {

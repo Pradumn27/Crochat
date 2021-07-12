@@ -10,7 +10,7 @@ function Demo() {
                     <nav className="navbar">
                         <ul className="navbar-nav">
                             <li className="logo">
-                                <a href="#" className="nav-link">
+                                <a href="/" className="nav-link">
                                     <span className="link-text logo-text">CroChat</span>
                                     <svg
                                         aria-hidden="true"
@@ -39,7 +39,7 @@ function Demo() {
                             </li>
 
                             <li className="nav-item">
-                                <a href="#" className="nav-link">
+                                <a href="/profile" className="nav-link">
                                     <svg
                                         aria-hidden="true"
                                         focusable="false"
@@ -68,7 +68,7 @@ function Demo() {
                             </li>
 
                             <li className="nav-item">
-                                <a href="#" className="nav-link">
+                                <a href="/add" className="nav-link">
                                     <svg
                                         aria-hidden="true"
                                         focusable="false"
@@ -97,7 +97,7 @@ function Demo() {
                             </li>
 
                             <li className="nav-item">
-                                <a href="#" className="nav-link">
+                                <a href="/friends" className="nav-link">
                                     <svg
                                         aria-hidden="true"
                                         focusable="false"
@@ -162,9 +162,9 @@ function Demo() {
                             </h1>
                             <h4>A chatting application for fun</h4>
                             <ul>
-                                <li><a>Update your Profile</a></li>
-                                <li><a>Add Friends</a></li>
-                                <li><a>Enter Chat Mode</a></li>
+                                <li>Update your Profile</li>
+                                <li>Add Friends</li>
+                                <li>Enter Chat Mode</li>
                             </ul>
                         </div>
                     </main>
