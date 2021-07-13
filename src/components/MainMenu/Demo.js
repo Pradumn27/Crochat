@@ -1,5 +1,6 @@
 import React from 'react'
 import "../MainPage/MainPage.css"
+import { Link } from 'react-router-dom';
 import "./Demo.css"
 
 function Demo() {
@@ -10,7 +11,7 @@ function Demo() {
                     <nav className="navbar">
                         <ul className="navbar-nav">
                             <li className="logo">
-                                <a href="/" className="nav-link">
+                                <Link to="/" className="nav-link">
                                     <span className="link-text logo-text">CroChat</span>
                                     <svg
                                         aria-hidden="true"
@@ -35,11 +36,11 @@ function Demo() {
                                             ></path>
                                         </g>
                                     </svg>
-                                </a>
+                                </Link>
                             </li>
 
                             <li className="nav-item">
-                                <a href="/profile" className="nav-link">
+                                <Link to="/profile" className="nav-link">
                                     <svg
                                         aria-hidden="true"
                                         focusable="false"
@@ -64,11 +65,11 @@ function Demo() {
                                         </g>
                                     </svg>
                                     <span className="link-text">Profile</span>
-                                </a>
+                                </Link>
                             </li>
 
                             <li className="nav-item">
-                                <a href="/add" className="nav-link">
+                                <Link to="/add" className="nav-link">
                                     <svg
                                         aria-hidden="true"
                                         focusable="false"
@@ -93,11 +94,11 @@ function Demo() {
                                         </g>
                                     </svg>
                                     <span className="link-text">Add Friends</span>
-                                </a>
+                                </Link>
                             </li>
 
                             <li className="nav-item">
-                                <a href="/friends" className="nav-link">
+                                <Link to="/friends" className="nav-link">
                                     <svg
                                         aria-hidden="true"
                                         focusable="false"
@@ -122,11 +123,11 @@ function Demo() {
                                         </g>
                                     </svg>
                                     <span className="link-text">Friend Requests</span>
-                                </a>
+                                </Link>
                             </li>
 
                             <li className="nav-item">
-                                <a href="/chat" className="nav-link">
+                                <Link to="/chat" className="nav-link">
                                     <svg
                                         aria-hidden="true"
                                         focusable="false"
@@ -151,7 +152,7 @@ function Demo() {
                                         </g>
                                     </svg>
                                     <span className="link-text">Enter Chat Mode</span>
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </nav>

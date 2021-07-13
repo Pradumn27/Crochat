@@ -2,11 +2,25 @@
     position: absolute;
     height:13vh;
     width: 90vw;
-    display: grid;
-    place-items: center;
+    display: flex;
+    align-items: center;
     background-color: rgba(7, 7, 7, 0.582);
     color: rgb(138, 99, 40);
 }
+
+.anch{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.back{
+    margin-right:  auto;
+    padding: 20px;
+}
+
 #header>img{
+    margin-right: auto;
     height:70px;
 }
