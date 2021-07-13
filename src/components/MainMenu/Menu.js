@@ -1,9 +1,9 @@
 import React from 'react'
 import "../ChatPage/ChatPage.css"
 import { Link } from 'react-router-dom';
-import "./Demo.css"
+import "./Menu.css"
 
-function Demo() {
+function Menu() {
     return( 
         <div className="main">
             <div className="andar">
@@ -175,4 +175,4 @@ function Demo() {
         )
 }
 
-export default Demo
+export default Menu;
