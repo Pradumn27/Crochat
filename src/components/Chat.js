@@ -53,7 +53,7 @@ export default function Chat() {
             <div className="chatfooter">
                 <EmojiEmotionsOutlinedIcon/>
                 <form>
-                <input className="inp" placeholder="type message..."  value={inp} onChange={(e)=>{setInp(e.target.value)}} type="text"></input>
+                <input className="inp" placeholder="type message..." defaultValue={inp} onChange={(e)=>{setInp(e.target.value)}} type="text"></input>
                 <button className="but" onClick={sendMessage} type="submit"> Send a Message</button>
                 </form>
                 <Mic/>

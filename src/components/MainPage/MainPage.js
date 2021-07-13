@@ -13,9 +13,7 @@ function MainPage() {
           <Router>
           <SideBar />
           <Switch>
-          <Route path="/chat/rooms/:roomId">
-            <Chat />
-          </Route>
+          <Route path="/chat/rooms/:roomId" component={Chat}/>
           </Switch>
           </Router>
         </div>

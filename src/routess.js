@@ -9,6 +9,7 @@ function Routess() {
             <Switch>
                 <Route path="/" exact component={Demo}/>
                 <Route path="/chat" exact component={MainPage}/>
+                <Route path="/chat/rooms/:roomId" exact component={MainPage}/>
             </Switch>
         </Router>
     ) 
