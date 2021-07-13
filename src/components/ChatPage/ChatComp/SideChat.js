@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Avatar } from '@material-ui/core'
 import "./SideBar.css"
-import db from "../Firebase"
+import db from "../../../Firebase"
 import { Link } from 'react-router-dom';
 
 export default function SideChat({ id, name }) {

@@ -1,10 +1,10 @@
-import Header from "../Header"
-import SideBar from "../SideBar";
-import Chat from "../Chat";
-import "./MainPage.css"
+import Header from "./ChatComp/Header"
+import SideBar from "./ChatComp/SideBar";
+import Chat from "./ChatComp/Chat";
+import "./ChatPage.css"
 import { BrowserRouter as Router,Switch, Route} from 'react-router-dom';  
 
-function MainPage() {
+function ChatPage() {
   return (
     <div className="main">
       <div className="andar">
@@ -22,4 +22,4 @@ function MainPage() {
   );
 }
 
-export default MainPage;
+export default ChatPage;

@@ -5,9 +5,9 @@ import Message from "./Message"
 import "./Chat.css"
 import {useParams} from "react-router-dom";
 import { Avatar } from '@material-ui/core';
-import db from "../Firebase"
+import db from "../../../Firebase"
 import firebase from 'firebase';
-import {useStateValue} from "../StateReducer/StateProvider"
+import {useStateValue} from "../../../StateReducer/StateProvider"
 
 export default function Chat() {
     const [{user},]=useStateValue();

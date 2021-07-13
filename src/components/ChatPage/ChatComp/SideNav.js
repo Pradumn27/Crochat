@@ -5,8 +5,8 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Avatar } from '@material-ui/core';
 import "./SideBar.css"
-import {useStateValue} from "../StateReducer/StateProvider"
-import db from "../Firebase"
+import {useStateValue} from "../../../StateReducer/StateProvider"
+import db from "../../../Firebase"
 
 export default function SideNav() {
     const [{user},] = useStateValue();

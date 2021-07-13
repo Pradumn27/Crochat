@@ -3,7 +3,7 @@ import SideNav from "./SideNav";
 import SideChat from "./SideChat";
 import { SearchOutlined } from "@material-ui/icons";
 import "./SideBar.css";
-import db from "../Firebase";
+import db from "../../../Firebase";
 
 export default function SideBar() {
     const [rooms, setRooms] = useState([]);
