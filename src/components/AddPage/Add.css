@@ -1,0 +1,60 @@
+.addfr {
+  background-color: rgb(25, 25, 25);
+  overflow: hidden;
+  height: 90vh;
+  width: 100%;
+  margin-left: 5rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.invitation-link{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: aqua;
+    align-items: center;
+    height: 60vh;
+}
+
+.addfr>h1{
+    color: aqua;
+    font-style: italic;
+    border-bottom: 1px solid aqua;
+}
+
+.input{
+    margin-left: 30px;
+    background-color: rgb(25, 25, 25);
+    width: 70%;
+    color: aliceblue;
+    margin-right: 5px;
+    border: none;
+    outline-width: 0;
+    font-size: 30px;
+    text-align: center;
+    font-style: italic;
+    font-family: "Anonymous Pro", monospace;
+    text-decoration: none;
+    border-bottom: 1px solid white;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.bn{
+    margin: 10px;
+    width: 150px;
+    background-color: wheat;
+}
+
+.bn:hover{
+    background-color: teal;
+}
