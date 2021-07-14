@@ -28,15 +28,41 @@
 }
 
 .typer {
-  animation: typewriter 2s steps(44) 1s 1 normal both,
+  animation: typewriter 1s steps(44) 1s 1 normal both,
     blinkTextCursor 500ms steps(44) infinite normal;
 }
 
-.data {
+.elements{
   height: 80vh;
-  display: flex;
   border: 2px solid white;
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.invitation{
+  margin-top: 50px;
+  display: flex;
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+}
+
+.invitation>h3{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 20px;
+  width: 20%;
+  height: 40px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.data {
+  display: flex;
 }
 
 .dp {
@@ -74,7 +100,7 @@
   border-bottom: 1px solid white;
 }
 
-.inp {
+.inpt {
   margin-left: 30px;
   background-color: rgb(25, 25, 25);
   width: 70%;
@@ -87,7 +113,12 @@
   text-decoration: none;
 }
 
-.inp:hover{
+.inpt:hover{
+  border-bottom: 1px solid white;
+}
+
+.hov{
+  font-size: 15px;
   border-bottom: 1px solid white;
 }
 
