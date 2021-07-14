@@ -8,7 +8,6 @@
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   font-style: italic;
   padding: 4em;
@@ -21,10 +20,11 @@
   margin: 0 auto;
   border-right: 2px solid rgba(255, 255, 255, 0.75);
   font-size: 180%;
-  height: 10vh;
+  height: 6vh;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
+  color: aqua;
 }
 
 .typer {
@@ -32,15 +32,73 @@
     blinkTextCursor 500ms steps(44) infinite normal;
 }
 
-.data{
+.data {
   height: 80vh;
+  display: flex;
+  border: 2px solid white;
+  margin-top: 20px;
 }
 
-.dp{
+.dp {
+  margin-left: 5rem;
   display: flex;
+  justify-content: center;
+  padding: 5px;
   align-items: center;
-  justify-content: space-around;
 }
+
+.dn{
+  margin-left: 5rem;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  align-items: center;
+}
+.dp > h4 {
+  font-size: 20px;
+}
+
+.dp-in {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.change {
+  font-size: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+.change:hover{
+  border-bottom: 1px solid white;
+}
+
+.inp {
+  margin-left: 30px;
+  background-color: rgb(25, 25, 25);
+  width: 70%;
+  color: aliceblue;
+  margin-right: 5px;
+  border: none;
+  outline-width: 0;
+  font-size: 30px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.inp:hover{
+  border-bottom: 1px solid white;
+}
+
+.dn-form{
+  display: flex;
+}
+
+.but{
+  display: none;
+}
+
 @keyframes typewriter {
   0% {
     width: 0;
@@ -57,5 +115,3 @@
     border-right-color: transparent;
   }
 }
-
-
