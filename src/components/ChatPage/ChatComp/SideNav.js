@@ -7,6 +7,7 @@ import { Avatar } from '@material-ui/core';
 import "./SideBar.css"
 import {useStateValue} from "../../../StateReducer/StateProvider"
 import db from "../../../Firebase"
+import firebase from "firebase"
 
 export default function SideNav() {
     const [{user},] = useStateValue();
@@ -14,7 +15,8 @@ export default function SideNav() {
         const roomName = prompt("Please Enter Name for Chat");
         if(roomName!==""){
         db.collection("rooms").add({
-            name:roomName
+            name:roomName,
+            lastMessage:firebase.firestore.FieldValue.serverTimestamp(),
         })}
     }
     return (

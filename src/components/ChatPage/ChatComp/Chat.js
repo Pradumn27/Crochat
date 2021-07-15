@@ -10,7 +10,7 @@ import firebase from 'firebase';
 import {useStateValue} from "../../../StateReducer/StateProvider"
 
 export default function Chat() {
-    const [{user},]=useStateValue();
+    const [{user},]=useStateValue(); 
     const [inp,setInp]=useState('');
     const {roomId} = useParams();
     const [roomName,setRoomName]=useState('');
@@ -32,6 +32,9 @@ export default function Chat() {
             name:user.displayName,
             message:inp,
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        });
+        db.collection('rooms').doc(roomId).update({
+            lastMessage:firebase.firestore.FieldValue.serverTimestamp()
         })
         setInp("");
     }
@@ -53,7 +56,7 @@ export default function Chat() {
             <div className="chatfooter">
                 <EmojiEmotionsOutlinedIcon/>
                 <form>
-                <input className="inp" placeholder="type message..." value={inp} onChange={(e)=>{setInp(e.target.value)}} type="text"></input>
+                <input className="inp" placeholder="type message..." defaultValue={inp} onChange={(e)=>{setInp(e.target.value)}} type="text"></input>
                 <button className="but" onClick={sendMessage} type="submit"> Send a Message</button>
                 </form>
                 <Mic/>

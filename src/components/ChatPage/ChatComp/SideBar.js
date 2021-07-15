@@ -8,7 +8,7 @@ import db from "../../../Firebase";
 export default function SideBar() {
     const [rooms, setRooms] = useState([]);
     useEffect(() => {
-        const data = db.collection("rooms").onSnapshot((snapshot) =>
+        const data = db.collection("rooms").orderBy('lastMessage','desc').onSnapshot((snapshot) =>
             setRooms(
                 snapshot.docs.map((doc) => ({
                     id: doc.id,
