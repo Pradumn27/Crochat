@@ -90,6 +90,7 @@ main h1{
 .link-text {
   display: none;
   margin-left: 1rem;
+  font-size: 16px;
 }
 
 .nav-link svg {
@@ -162,6 +163,10 @@ main h1{
   main {
     margin: 0;
   }
+}
+
+.logOut{
+  cursor: pointer;
 }
 
 /* Large screens */

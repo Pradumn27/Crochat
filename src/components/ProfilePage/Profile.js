@@ -21,7 +21,6 @@ function Profile() {
     },[user.photoURL])
     const changeName = (e) => {
         e.preventDefault();
-        console.log("enter");
     }
     const clipped = () => {
         // For Chrome
@@ -59,7 +58,7 @@ function Profile() {
                                 </div>
                                 <div className="invitation">
                                     <h4>Invitation Code :</h4>
-                                    <h3 className={hov?"hov":""} onMouseEnter={()=>{setHov(true)}} onMouseLeave={()=>{setHov(false)}} onClick={clipped} >{hov?"copy to clipboard":123455}</h3>
+                                    <h3 className={hov?"hov":""} onMouseEnter={()=>{setHov(true);}} onMouseLeave={()=>{setHov(false)}} onClick={clipped} >{hov?"copy to clipboard":user.uid}</h3>
                                 </div>
                             </div>)}
                     </div>

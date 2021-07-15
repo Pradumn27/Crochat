@@ -20,7 +20,7 @@ export default function Chat() {
             db.collection("rooms").doc(roomId).onSnapshot(snapShot=>{
                 setRoomName(snapShot.data()?.name)
             })
-            db.collection("rooms").doc(roomId).collection('messages').orderBy("timestamp","asc").onSnapshot(snapShot=>{
+            db.collection("rooms").doc(roomId).collection('messages').orderBy("timestamp","desc").onSnapshot(snapShot=>{
                 setMessages(snapShot.docs.map(doc=>doc.data()))
             })
         }

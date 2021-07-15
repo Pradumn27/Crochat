@@ -50,14 +50,9 @@
 }
 
 .sidechats {
-  overflow-y: scroll;
-  box-sizing: content-box; /*Hidding ScrollBar*/
+  overflow-y: auto;/*Hidding ScrollBar*/
   scrollbar-width: 10px;
   -ms-overflow-style: none;
-}
-.sidechats::-webkit-scrollbar {
-  width: 0;
-  height: 0;
 }
 
 .sidenav {
