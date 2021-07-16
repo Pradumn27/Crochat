@@ -1,4 +1,4 @@
-import Routess from "./routess"
+import UserChecker from "./UserChecker"
 import { useStateValue } from "./StateReducer/StateProvider"
 import { auth } from './Firebase';
 import { useEffect, useState } from "react"
@@ -15,16 +15,16 @@ function App() {
       dispatch({
         type: actionTypes.SET_USER,
         user: user,
-      })
+      });
+      user?setCheck(true):setCheck(false);
+      setIsLoading(false);
     });
-    user?setCheck(true):setCheck(false);
-    setIsLoading(false);
   },[user,check]);
   return (
     <>
       {isLoading?<Loading/>:check?(
         <div >
-          <Routess check={check}/>
+          <UserChecker />
         </div>) : <Login />}
     </>
   );

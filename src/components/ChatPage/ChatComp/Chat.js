@@ -23,7 +23,7 @@ export default function Chat() {
             db.collection("rooms").doc(roomId).collection('messages').orderBy("timestamp","desc").onSnapshot(snapShot=>{
                 setMessages(snapShot.docs.map(doc=>doc.data()))
             })
-        }
+        };
     },[roomId])
 
     const sendMessage = (e) =>{
