@@ -17,13 +17,14 @@ function Requests() {
         // window.clipboardData.setData("Text", 123455);
     }
     useEffect(() => {
+        if(id){
         db.collection("users").doc(id).collection("requests").onSnapshot(snapShot => {
             setReq(snapShot.docs.map(doc => ({
                 data:doc.data(),
                 docId:doc.id
             })));
-        });
-    }, [])
+        });}
+    }, [id])
     return (
         <div className="main">
             <div className="andar">

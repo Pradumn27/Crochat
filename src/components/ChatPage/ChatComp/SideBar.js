@@ -11,6 +11,7 @@ export default function SideBar() {
     const [chats, setChats] = useState([]);
     const [search, setSearch] = useState('');
     useEffect(() => {
+        if(id){
         const data = db.collection("users").doc(id).collection("chats").orderBy('lastMessage', 'desc').onSnapshot((snapshot) =>
             setChats(
                 snapshot.docs.map((doc) => ({
@@ -21,7 +22,7 @@ export default function SideBar() {
         );
         return () => {
             data();
-        };
+        };}
     }, []);
     return (
         <div className="sidebar">
