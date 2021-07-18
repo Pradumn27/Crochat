@@ -13,7 +13,7 @@ export default function SideNav() {
     const [{user},] = useStateValue();
     const addGroup = () =>{
         const roomName = prompt("Please Enter Name for Chat");
-        if(roomName!==""){
+        if(roomName !== "" || roomName !== null){
         db.collection("rooms").add({
             name:roomName,
             lastMessage:firebase.firestore.FieldValue.serverTimestamp(),

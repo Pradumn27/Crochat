@@ -4,12 +4,14 @@ import "../ChatPage/ChatPage.css"
 import MenuNav from '../MainMenu/MenuNav'
 import "./Profile.css"
 import { useStateValue } from "../../StateReducer/StateProvider"
+import db from "../../Firebase"
 
 function Profile() {
-    const [{ user },] = useStateValue();
+    const [{ user,id },] = useStateValue();
     const [dis, setDis] = useState(false);
     const [name, setName] = useState(user.displayName);
     const [hov,setHov] = useState(false);
+    const [hove,setHove] = useState(false);
     const [photo,setPhoto] = useState(user.photoURL);
     useEffect(() => {
         setTimeout(() => {
@@ -21,10 +23,13 @@ function Profile() {
     },[user.photoURL])
     const changeName = (e) => {
         e.preventDefault();
+        db.collection('users').doc(id).update({
+            name: name,
+        })
     }
     const clipped = () => {
         // For Chrome
-        navigator.clipboard.writeText(123455);
+        navigator.clipboard.writeText(id);
         // For Older Browser Versions
         // window.clipboardData.setData("Text", 123455);
     }
@@ -50,7 +55,8 @@ function Profile() {
                                         <h4>Display Name : </h4>
                                         <div className="dn-in">
                                             <form className="dn-form">
-                                                <input className="inpt" defaultValue={name} onChange={(e) => { setName(e.target.value) }}></input>
+                                                <input onMouseEnter={()=>{setHove(true);}} onMouseLeave={()=>{setHove(false)}} className="inpt" defaultValue={name} onChange={(e) => { setName(e.target.value) }}></input>
+                                                <h5 className={hove?"save":"nosave"}>(Press Enter To Save)</h5>
                                                 <button className="but" type="submit" onClick={changeName}>Save</button>
                                             </form>
                                         </div>
@@ -58,7 +64,7 @@ function Profile() {
                                 </div>
                                 <div className="invitation">
                                     <h4>Invitation Code :</h4>
-                                    <h3 className={hov?"hov":""} onMouseEnter={()=>{setHov(true);}} onMouseLeave={()=>{setHov(false)}} onClick={clipped} >{hov?"copy to clipboard":user.uid}</h3>
+                                    <h3 className={hov?"hov":""} onMouseEnter={()=>{setHov(true);}} onMouseLeave={()=>{setHov(false)}} onClick={clipped} >{hov?"copy to clipboard":id}</h3>
                                 </div>
                             </div>)}
                     </div>

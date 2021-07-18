@@ -1,5 +1,5 @@
 import { Button } from '@material-ui/core';
-import React, { useState } from 'react';
+import React from 'react';
 import './Login.css';
 import { auth, provider } from '../Firebase';
 import { actionTypes } from '../StateReducer/Reducer';

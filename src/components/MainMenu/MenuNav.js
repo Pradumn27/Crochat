@@ -3,10 +3,13 @@ import { Link } from 'react-router-dom';
 import "./Menu.css"
 import {auth} from "../../Firebase"
 import "../ChatPage/ChatPage.css"
+import { useHistory } from "react-router-dom";
 
 function MenuNav() {
+    const history = useHistory();
     const logOut = ()=>{
         auth.signOut().then(() => {
+            history.push("/");
           }).catch((error) => {
             console.log(error)
           });

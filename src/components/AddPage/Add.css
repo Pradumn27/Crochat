@@ -53,6 +53,8 @@
     margin: 10px;
     width: 150px;
     background-color: wheat;
+    width: 40%;
+    margin-left: 40px;
 }
 
 .bn:hover{

@@ -20,7 +20,6 @@ const reducer = (state, action) => {
                 ...state,
                 id: action.id,
             };
-        
         default:
             return state;
     }

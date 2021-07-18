@@ -127,6 +127,20 @@
 
 .dn-form{
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.save{
+  text-align: center;
+  width: 70%;
+  margin-left: 30px;
+  font-size: 10px;
+  padding-top: 5px;
+}
+
+.nosave{
+  display: none;
 }
 
 .but{

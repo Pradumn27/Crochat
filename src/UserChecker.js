@@ -13,6 +13,8 @@ function UserChecker() {
         if (event._delegate._snapshot.docChanges.length === 0) {
             db.collection('users').add({
                 user: user.uid,
+                name: user.displayName,
+                photoUrl: user.photoURL,
             }).then(docRef => {
                 setIdd(docRef.id);
                 setIsLoading(false);
