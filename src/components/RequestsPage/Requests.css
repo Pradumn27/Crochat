@@ -1,3 +1,16 @@
+.empty-req {
+  background-color: rgb(25, 25, 25);
+  overflow: hidden;
+  height: 90vh;
+  width: 100%;
+  margin-left: 5rem;
+  padding: 1rem;
+  color: rgba(255, 255, 255, 0.75);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .requests {
   background-color: rgb(25, 25, 25);
   overflow: hidden;
@@ -7,3 +20,72 @@
   padding: 1rem;
   color: rgba(255, 255, 255, 0.75);
 }
+
+.full{
+  width: 80%;
+  margin-top: 3%;
+  margin-left: 100px;
+  
+}
+
+.reqs{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.top-text{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Empty{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.Names{
+  display: flex;
+  margin-left: 10px;
+  align-items: center;
+}
+
+.name{
+  margin-left: 20px;
+}
+
+.request{
+  display: flex;
+  width: 80%;
+  border: 1px solid rgb(7, 184, 139);
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.req-icons{
+  margin-right: 80px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon> .MuiSvgIcon-root{
+  cursor: pointer;
+  margin: 10px;
+}
+.icon > .MuiSvgIcon-root:hover{
+  color:aqua;
+}
+
+
+
+
+
+
