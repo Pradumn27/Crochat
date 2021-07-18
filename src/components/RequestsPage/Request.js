@@ -3,11 +3,14 @@ import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 import { Avatar } from '@material-ui/core'
 import CancelIcon from '@material-ui/icons/Cancel';
 import db from "../../Firebase"
-import {useStateValue} from "../../StateReducer/StateProvider"
+import { useStateValue } from "../../StateReducer/StateProvider"
+import firebase from "firebase"
 
-function Request({ idd ,docId}) {
-    const [{id},]=useStateValue();
+function Request({ idd, docId }) {
+    const [{ id, user },] = useStateValue();
     const [name, setName] = useState('');
+    const [fri, setFri] = useState('');
+    const [mi, setMi] = useState('');
     const [photo, setPhoto] = useState('');
     useEffect(() => {
         db.collection("users").doc(idd).get().then((doc) => {
@@ -15,17 +18,49 @@ function Request({ idd ,docId}) {
             setPhoto(doc.data().photoUrl);
         })
     }, [])
-    const accept=()=>{
+    useEffect(() => {
+        if (fri !== '') {
+            db.collection("users").doc(id).collection("chats").doc(mi).update({
+                friendRoomId: fri,
+            })
+            db.collection("users").doc(idd).collection("chats").doc(fri).update({
+                friendRoomId: mi,
+            })
+            alert("Friend added");
+            db.collection("users").doc(id).collection("requests").doc(docId).delete();
+        }
+    }, [fri])
+    const accept = () => {
         db.collection("users").doc(id).collection("friends").add({
-            friend:idd,
+            friend: idd,
+            name: name,
+            photo: photo,
+        });
+        db.collection("users").doc(id).collection("chats").add({
+            friend: idd,
+            name: name,
+            photo: photo,
+            friendRoomId: null,
+            lastMessage: firebase.firestore.FieldValue.serverTimestamp(),
+        }).then(docRef => {
+            setMi(docRef.id);
         });
         db.collection("users").doc(idd).collection("friends").add({
-            friend:id,
+            friend: id,
+            name: user.displayName,
+            photo: user.photoURL,
         });
-        db.collection("users").doc(id).collection("requests").doc(docId).delete();
-        alert("Friend added");
+        db.collection("users").doc(idd).collection("chats").add({
+            friend: id,
+            name: user.displayName,
+            photo: user.photoURL,
+            friendRoomId: null,
+            lastMessage: firebase.firestore.FieldValue.serverTimestamp(),
+        }).then(docRef => {
+            setFri(docRef.id);
+        });
     }
-    const reject=()=>{
+    const reject = () => {
         db.collection("users").doc(id).collection("requests").doc(docId).delete()
     }
     return (
@@ -39,7 +74,7 @@ function Request({ idd ,docId}) {
                     <DoneOutlineIcon onClick={accept} />
                 </div>
                 <div className="icon">
-                    <CancelIcon onClick={reject}/>
+                    <CancelIcon onClick={reject} />
                 </div>
             </div>
         </div>

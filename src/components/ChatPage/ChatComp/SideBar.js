@@ -4,13 +4,15 @@ import SideChat from "./SideChat";
 import { SearchOutlined } from "@material-ui/icons";
 import "./SideBar.css";
 import db from "../../../Firebase";
+import {useStateValue} from "../../../StateReducer/StateProvider"
 
 export default function SideBar() {
-    const [rooms, setRooms] = useState([]);
+    const [{id},]=useStateValue();
+    const [chats, setChats] = useState([]);
     const [search, setSearch] = useState('');
     useEffect(() => {
-        const data = db.collection("rooms").orderBy('lastMessage', 'desc').onSnapshot((snapshot) =>
-            setRooms(
+        const data = db.collection("users").doc(id).collection("chats").orderBy('lastMessage', 'desc').onSnapshot((snapshot) =>
+            setChats(
                 snapshot.docs.map((doc) => ({
                     id: doc.id,
                     data: doc.data()
@@ -31,11 +33,11 @@ export default function SideBar() {
                 </div>
             </div>
             <div className="sidechats">
-                {rooms.filter((val) => {
+                {chats.filter((val) => {
                     if (search === "") { return val; }
                     else if ((val.data.name.toLowerCase()).includes(search.toLowerCase())) { return val; }
-                }).map((room) => {
-                    return <SideChat key={room.id} id={room.id} name={room.data.name} />;
+                }).map((chat) => {
+                    return <SideChat key={chat.id} roomId={chat.id} friendId={chat.data.friend} name={chat.data.name} photo={chat.data.photo} friendRoomId={chat.data.friendRoomId}/>;
                 })}
             </div>
         </div>
