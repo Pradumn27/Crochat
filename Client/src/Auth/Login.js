@@ -8,7 +8,7 @@ import { useStateValue } from '../StateReducer/StateProvider';
 function Login() {
     const [, dispatch] = useStateValue();
     const signIn = () => {
-        auth.setPersistence('local').then(() => {
+        auth.setPersistence('session').then(() => {
             auth.signInWithPopup(provider)
                 .then((result) => {
                     dispatch({
