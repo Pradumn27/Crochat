@@ -41,6 +41,7 @@ function Request({ idd, docId }) {
             name: name,
             photo: photo,
             friendRoomId: null,
+            SocId: null,
             lastMessage: firebase.firestore.FieldValue.serverTimestamp(),
         }).then(docRef => {
             setMi(docRef.id);
@@ -52,6 +53,7 @@ function Request({ idd, docId }) {
         });
         db.collection("users").doc(idd).collection("chats").add({
             friend: id,
+            SocId: null,
             name: user.displayName,
             photo: user.photoURL,
             friendRoomId: null,

@@ -1,16 +1,16 @@
 import React,{useState,useEffect} from 'react'
 import EmojiEmotionsOutlinedIcon from '@material-ui/icons/EmojiEmotionsOutlined';
-import { Call, Mic, VideoCall } from '@material-ui/icons';
+import { Call, Mic, VideoCall} from '@material-ui/icons';
 import Message from "./Message"
 import "./Chat.css"
 import {useLocation} from "react-router-dom";
 import { Avatar } from '@material-ui/core';
 import db from "../../../Firebase"
 import firebase from 'firebase';
-import {useStateValue} from "../../../StateReducer/StateProvider"
+import {useStateValue} from "../../../StateReducer/StateProvider";
 
-export default function Chat() {
-    const [{user,id},]=useStateValue(); 
+export default function Chat({setRoomId,receivingCall}) {
+    const [{user,id},]=useStateValue();
     const [inp,setInp]=useState('');
     const location = useLocation()
     const { friendId,roomId,friendRoomId } = location.state
@@ -19,14 +19,18 @@ export default function Chat() {
     useEffect(()=>{
         if(roomId){
             db.collection("users").doc(id).collection("chats").doc(roomId).onSnapshot(snapShot=>{
-                setRoomName(snapShot.data()?.name)
+                setRoomName(snapShot.data()?.name);
             })
             db.collection("users").doc(id).collection("chats").doc(roomId).collection('messages').orderBy("timestamp","desc").onSnapshot(snapShot=>{
                 setMessages(snapShot.docs.map(doc=>doc.data()))
             })
         };
-    },[roomId])
+    },[roomId]);
 
+    const vidClick = () =>{
+        setRoomId(roomId);
+    }
+    
     const sendMessage = (e) =>{
         e.preventDefault();
         db.collection("users").doc(id).collection("chats").doc(roomId).collection('messages').add({
@@ -49,12 +53,12 @@ export default function Chat() {
     }
     return (
         <div className="chat" >
-            <div className="chatheader">
+            <div className="chatheader">   
                 <Avatar />
                 <h3>{roomName}</h3>
                 <div className="calls">
-                    <Call/>
-                    <VideoCall/>
+                    <Call/> 
+                    <VideoCall onClick={()=>vidClick()} />
                 </div>
             </div>
             <div className="messages" id="ms">

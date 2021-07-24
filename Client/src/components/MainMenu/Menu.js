@@ -18,6 +18,7 @@ function Menu() {
                             <ul>
                                 <li>Update your Profile</li>
                                 <li>Add Friends</li>
+                                <li>Video/Audio call with Friends</li>
                                 <li>Enter Chat Mode</li>
                             </ul>
                         </div>

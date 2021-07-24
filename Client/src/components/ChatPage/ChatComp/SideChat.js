@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect , useContext } from 'react'
 import { Avatar } from '@material-ui/core'
 import "./SideBar.css"
 import db from "../../../Firebase"
 import { Link } from 'react-router-dom';
 import { useStateValue } from '../../../StateReducer/StateProvider';
+import { SocketContext } from '../../../VideoContext/Context';
 
-export default function SideChat({ roomId, friendId ,name,photo,friendRoomId}) {
+export default function SideChat({roomId, friendId ,name,photo,friendRoomId}) {
+    const { me} = useContext(SocketContext);
     const [messages, setMessages] = useState([]);
     const [{id},] = useStateValue();
     useEffect(() => {
@@ -14,7 +16,16 @@ export default function SideChat({ roomId, friendId ,name,photo,friendRoomId}) {
                 setMessages(snapShot.docs.map(doc => doc.data())[0]?.message);
             })
         }
-    }, [roomId])
+    }, [roomId]);
+
+    useEffect(()=>{
+        if(friendRoomId){
+            db.collection("users").doc(friendId).collection("chats").doc(friendRoomId).update({
+                SocId:me
+            });
+        }
+    },[friendRoomId])
+    
     return (
         <Link className="link" to={{
             pathname:`/chat/rooms/${roomId}`,

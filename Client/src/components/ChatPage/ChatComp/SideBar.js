@@ -6,7 +6,7 @@ import "./SideBar.css";
 import db from "../../../Firebase";
 import {useStateValue} from "../../../StateReducer/StateProvider"
 
-export default function SideBar() {
+export default function SideBar({me}) {
     const [{id},]=useStateValue();
     const [chats, setChats] = useState([]);
     const [search, setSearch] = useState('');
@@ -38,7 +38,7 @@ export default function SideBar() {
                     if (search === "") { return val; }
                     else if ((val.data.name.toLowerCase()).includes(search.toLowerCase())) { return val; }
                 }).map((chat) => {
-                    return <SideChat key={chat.id} roomId={chat.id} friendId={chat.data.friend} name={chat.data.name} photo={chat.data.photo} friendRoomId={chat.data.friendRoomId}/>;
+                    return <SideChat key={chat.id} me={me} roomId={chat.id} friendId={chat.data.friend} name={chat.data.name} photo={chat.data.photo} friendRoomId={chat.data.friendRoomId}/>;
                 })}
             </div>
         </div>
