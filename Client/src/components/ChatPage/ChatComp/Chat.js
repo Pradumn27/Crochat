@@ -28,7 +28,7 @@ export default function Chat({setRoomId,receivingCall}) {
     },[roomId]);
 
     const vidClick = () =>{
-        setRoomId(roomId);
+        setRoomId(friendId);
     }
     
     const sendMessage = (e) =>{

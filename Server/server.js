@@ -30,27 +30,6 @@ io.on("connection",(socket)=>{
 	socket.on("answerCall", (data) => {
 		io.to(data.to).emit("callAccepted", data.signal)
 	});
-    // if(!users[socket.id]){
-    //     users[socket.id]=socket.id;
-    // }
-    // socket.emit("myID",socket.id);
-
-    // socket.on("disconnect",()=>{
-    //     delete users[socket.id];
-    // })
-
-    // socket.on("join-room",(roomId,userId)=>{
-    //     socket.join(roomId);
-    //     socket.to(roomId).broadcast.emit("user-connected",userId);
-    // })
-
-    // socket.on("call-user",({userToCall,signal,from,name})=>{
-    //     io.to(userToCall).emit("callIncoming",{signal:signal,from:from,name:name})
-    // })
-
-    // socket.on("answer-call",data=>{
-    //     io.to(data.to).emit("call-accepted",data.signal);
-    // })
 })
 
 server.listen(5000)

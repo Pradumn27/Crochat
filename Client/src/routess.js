@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react'
+import React,{useEffect,useState,useContext} from 'react'
 import Menu from "./components/MainMenu/Menu"
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ChatPage from "./components/ChatPage/ChatPage";
@@ -8,8 +8,12 @@ import Requests from "./components/RequestsPage/Requests"
 import { useStateValue } from './StateReducer/StateProvider';
 import { actionTypes } from './StateReducer/Reducer';
 import Loading from "./Loading/Loading"
+import {SocketContext} from"./VideoContext/Context";
+import db from "./Firebase"
+import VideoAcceptor from "./components/VideoAcceptor/VideoAcceptor"
 
 function Routess({id}) {
+    const {me,call,answerCall,accepted} = useContext(SocketContext);
     const [,dispatch] = useStateValue();
     const [is,setIs] = useState(true)
     useEffect(()=>{
@@ -18,10 +22,18 @@ function Routess({id}) {
             id:id,
         });
         setIs(false);
+    },[dispatch])
+    useEffect(()=>{
+        db.collection("users").doc(id).update({
+            soc:me,
+        })
     },[])
+
     return (
         <>
-        {is?<Loading />:(
+        {is?<Loading />:accepted?(<VideoAcceptor />):call.isReceivingCall?(<>
+        <button onClick={answerCall} />
+        </>):(
         <Router>
             <Switch>
                 <Route path="/" exact component={Menu} />

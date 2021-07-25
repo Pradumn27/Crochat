@@ -15,6 +15,7 @@ function UserChecker() {
                 user: user.uid,
                 name: user.displayName,
                 photoUrl: user.photoURL,
+                soc:null
             }).then(docRef => {
                 setIdd(docRef.id);
                 setIsLoading(false);

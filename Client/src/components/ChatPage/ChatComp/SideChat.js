@@ -4,10 +4,8 @@ import "./SideBar.css"
 import db from "../../../Firebase"
 import { Link } from 'react-router-dom';
 import { useStateValue } from '../../../StateReducer/StateProvider';
-import { SocketContext } from '../../../VideoContext/Context';
 
 export default function SideChat({roomId, friendId ,name,photo,friendRoomId}) {
-    const { me} = useContext(SocketContext);
     const [messages, setMessages] = useState([]);
     const [{id},] = useStateValue();
     useEffect(() => {
@@ -17,14 +15,6 @@ export default function SideChat({roomId, friendId ,name,photo,friendRoomId}) {
             })
         }
     }, [roomId]);
-
-    useEffect(()=>{
-        if(friendRoomId){
-            db.collection("users").doc(friendId).collection("chats").doc(friendRoomId).update({
-                SocId:me
-            });
-        }
-    },[friendRoomId])
     
     return (
         <Link className="link" to={{

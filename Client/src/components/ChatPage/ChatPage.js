@@ -11,19 +11,17 @@ function ChatPage() {
   const userVideo = useRef();
   const { answerCall, call, callAccepted } = useContext(SocketContext);
   const [roomId, setRoomId] = useState(null);
-  useEffect(()=>{
-    console.log(roomId);
-  },[roomId])
   return (
     <>
-      {roomId ? <VideoCall  roomId={roomId} reff={userVideo}/> :call.isReceivingCall ? (
-            <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-              <h1>{call.name} is calling:</h1>
-              <button  onClick={answerCall(userVideo)}>
-                Answer
-              </button>
-            </div>
-          )
+      {roomId ? <VideoCall  roomId={roomId} reff={userVideo}/> 
+      // :call.isReceivingCall ? (
+      //       <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+      //         <h1>{call.name} is calling:</h1>
+      //         <button  onClick={answerCall(userVideo)}>
+      //           Answer
+      //         </button>
+      //       </div>
+      //     )
       :(<div className="main">
         <div className="andar">
           <Header />          

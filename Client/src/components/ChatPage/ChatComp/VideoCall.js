@@ -2,34 +2,28 @@ import React, { useState, useEffect,useRef, useContext  } from 'react'
 import { motion } from 'framer-motion';
 import "./VideoCall.css"
 import db from "../../../Firebase"
-import {useStateValue} from "../../../StateReducer/StateProvider";
+// import {useStateValue} from "../../../StateReducer/StateProvider";
 import { SocketContext } from '../../../VideoContext/Context';
 
 function VideoCall({roomId}) {
-    const { me, callAccepted, friendstream,stream, setName, callEnded, leaveCall, callUser } = useContext(SocketContext);
-    const [{user,id},]=useStateValue();
+    const { stream, callUser,PartnerVideo} = useContext(SocketContext);
     const myVideo = useRef();
-    const userVideo = useRef();
     const [fsi,setFsi]=useState(null);
     useEffect(()=>{
         if(roomId){
-        db.collection("users").doc(id).collection("chats").doc(roomId).onSnapshot(snapShot=>{
-            setFsi(snapShot.data()?.SocId);
-        })
-        myVideo.current.srcObject = stream;}
+        db.collection("users").doc(roomId).onSnapshot(snapShot=>setFsi(snapShot.data().soc))}
     },[roomId])
 
     useEffect(()=>{
         if(fsi){
-            console.log(fsi);
-            callUser(fsi);     
+            callUser(fsi);   
         }
     },[fsi])
 
     useEffect(()=>{
-        if(friendstream){
-        userVideo.current.srcObject = friendstream;}
-    },[friendstream])
+        myVideo.current.srcObject = stream;
+    },[stream])
+
     return (
         <div className="main fix">
             <div className="andar">
@@ -42,9 +36,7 @@ function VideoCall({roomId}) {
                         animate={{scale:1}}
                     >
                         <video playsInline autoPlay muted ref={myVideo} className="vid" />
-                        {friendstream &&
-                        <video playsInline autoPlay muted ref={userVideo} className="vid"/>
-                        }
+                        {PartnerVideo}
                     </motion.div>
                 </motion.div>
             </div>
