@@ -11,8 +11,6 @@ const ContextProvider = ({ children }) => {
   const [accepted, setAccepted] = useState(false);
   const [callEnded, setCallEnded] = useState(false);
   const [stream, setStream] = useState();
-  const [mystream, setMyStream] = useState();
-  const [friendstream, setFriendstream] = useState();
   const [name, setName] = useState('');
   const [call, setCall] = useState({});
   const [me, setMe] = useState('');
@@ -48,7 +46,7 @@ const ContextProvider = ({ children }) => {
 
   const answerCall = () => {
     navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(currentStream => {
-      setMyStream(currentStream);
+      setStream(currentStream);
       setAccepted(true);
       const peer2 = new Peer({ initiator: false, trickle: false, stream: currentStream });
       peer2.on('signal', (data) => {
@@ -61,7 +59,7 @@ const ContextProvider = ({ children }) => {
         }
       });
 
-      peer2.signal(call.signal);
+      peer2.signal(call.signal);   
     });
   };
 
@@ -89,7 +87,6 @@ const ContextProvider = ({ children }) => {
       call,
       callAccepted,
       stream,
-      mystream,
       name,
       PartnerVideo,
       CallingPartnerVideo,
@@ -97,7 +94,6 @@ const ContextProvider = ({ children }) => {
       setName,
       callEnded,
       me,
-      friendstream,
       callUser,
       leaveCall,
       answerCall,

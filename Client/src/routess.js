@@ -1,4 +1,4 @@
-import React,{useEffect,useState,useContext} from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import Menu from "./components/MainMenu/Menu"
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ChatPage from "./components/ChatPage/ChatPage";
@@ -8,42 +8,45 @@ import Requests from "./components/RequestsPage/Requests"
 import { useStateValue } from './StateReducer/StateProvider';
 import { actionTypes } from './StateReducer/Reducer';
 import Loading from "./Loading/Loading"
-import {SocketContext} from"./VideoContext/Context";
+import { SocketContext } from "./VideoContext/Context";
 import db from "./Firebase"
 import VideoAcceptor from "./components/VideoAcceptor/VideoAcceptor"
+import IncomingCall from "./IncomingCall/IncomingCall"
 
-function Routess({id}) {
-    const {me,call,answerCall,accepted} = useContext(SocketContext);
-    const [,dispatch] = useStateValue();
-    const [is,setIs] = useState(true)
-    useEffect(()=>{
+function Routess({ id }) {
+    const { me, call, accepted } = useContext(SocketContext);
+    const [, dispatch] = useStateValue();
+    const [is, setIs] = useState(true)
+    useEffect(() => {
         dispatch({
-            type:actionTypes.SET_ID,
-            id:id,
+            type: actionTypes.SET_ID,
+            id: id,
         });
         setIs(false);
-    },[dispatch])
-    useEffect(()=>{
+    }, [dispatch])
+    useEffect(() => {
         db.collection("users").doc(id).update({
-            soc:me,
+            soc: me,
         })
-    },[])
+    }, [])
 
     return (
         <>
-        {is?<Loading />:accepted?(<VideoAcceptor />):call.isReceivingCall?(<>
-        <button onClick={answerCall} />
-        </>):(
-        <Router>
-            <Switch>
-                <Route path="/" exact component={Menu} />
-                <Route path="/chat" exact component={ChatPage} />
-                <Route path="/profile" exact component={Profile} />
-                <Route path="/add" exact component={Add} />
-                <Route path="/requests" exact component={Requests} />
-                <Route path="/chat/rooms/:roomId" exact component={ChatPage} />
-            </Switch>
-        </Router>)}
+            {is ? <Loading /> : accepted ? (<VideoAcceptor />) : (
+                <>
+                    {call.isReceivingCall && <IncomingCall />}
+                    <Router>
+                        <Switch>
+                            <Route path="/" exact component={Menu} />
+                            <Route path="/chat" exact component={ChatPage} />
+                            <Route path="/profile" exact component={Profile} />
+                            <Route path="/add" exact component={Add} />
+                            <Route path="/requests" exact component={Requests} />
+                            <Route path="/chat/rooms/:roomId" exact component={ChatPage} />
+                        </Switch>
+                    </Router>
+                </>
+            )}
         </>
     )
 }

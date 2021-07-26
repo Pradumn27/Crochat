@@ -7,9 +7,6 @@ const io = require("socket.io")(server,{
         methods:["GET","POST"]
     }
 });
-
-const users={};
-
 app.use(cors());
 
 app.get("/",(req,res)=>{
