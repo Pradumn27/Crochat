@@ -5,7 +5,6 @@ import Peer from 'simple-peer';
 const SocketContext = createContext();
 
 const socket = io('http://localhost:5000');
-let peerConnection;
 
 const ContextProvider = ({ children }) => {
   const [callAccepted, setCallAccepted] = useState(false);
@@ -17,12 +16,17 @@ const ContextProvider = ({ children }) => {
   const [me, setMe] = useState('');
   const partnerVideo = useRef();
   const [calling, setCalling] = useState(false);
+  const [audioCalling, setAudioCalling] = useState(false);
+  const [audioCall,setAudioCall] = useState(false);
 
   useEffect(() => {
     socket.on('me', (id) => { setMe(id) });
     socket.on('callIncoming', ({ signal, from, name }) => {
       setCall({ isReceivingCall: true, from, name, signal });
     });
+    socket.on("audioCall",()=>{
+      setAudioCall(true);
+    })
   }, []);
 
   const callUser = (id) => {
@@ -44,13 +48,18 @@ const ContextProvider = ({ children }) => {
       });
       socket.on("rejected", () => {
         setCalling(false);
+        setAudioCall(false);
         currentStream.getTracks().forEach(tracks => tracks.stop());
       })
-      socket.on("hangedUp",()=>{
-        currentStream.getTracks().forEach(tracks=>tracks.stop());
+      socket.on("hangedUp", () => {
+        currentStream.getTracks().forEach(tracks => tracks.stop());
         setStream(null);
         setCallEnded(true);
+        setAudioCall(false);
       })
+      if(audioCall){
+        socket.emit("audioCall",id);
+      }
     });
   };
 
@@ -71,12 +80,13 @@ const ContextProvider = ({ children }) => {
 
       peer2.signal(call.signal);
 
-      socket.on("hangedUp",()=>{
-        currentStream.getTracks().forEach(tracks=>tracks.stop());
+      socket.on("hangedUp", () => {
+        currentStream.getTracks().forEach(tracks => tracks.stop());
         setStream(null);
         setCallEnded(true);
         setCall({});
-      }) 
+        setAudioCall(false)
+      })
     });
   };
 
@@ -109,12 +119,17 @@ const ContextProvider = ({ children }) => {
       name,
       PartnerVideo,
       CallingPartnerVideo,
+      partnerVideo,
       accepted,
       setName,
+      audioCall,
+      setAudioCall,
       callEnded,
       setCallEnded,
       calling,
       setCalling,
+      audioCalling,
+      setAudioCalling,
       me,
       callUser,
       leaveCall,

@@ -18,7 +18,7 @@ const styles = {
 };
 
 const ConversationButtons = ({me,id}) => {
-    const {socket, stream} = useContext(SocketContext)
+    const {socket, stream,audioCall} = useContext(SocketContext)
     const [mic,setMic] = useState(true);
     const [camera,setCamera] = useState(true);
 
@@ -48,9 +48,9 @@ const ConversationButtons = ({me,id}) => {
             <ConversationButton onClickHandler={handleHangUpButtonPressed}>
                 <MdCallEnd style={styles.icon} />
             </ConversationButton>
-            <ConversationButton onClickHandler={handleCameraButtonPressed}>
+            {!audioCall && <ConversationButton onClickHandler={handleCameraButtonPressed}>
                 {camera ? <MdVideocam style={styles.icon} /> : <MdVideocamOff style={styles.icon} />}
-            </ConversationButton>
+            </ConversationButton>}
             {/* <ConversationButton onClickHandler={handleScreenSharingButtonPressed}>
                 {screenSharingActive ? <MdCamera style={styles.icon} /> : <MdVideoLabel style={styles.icon} />}
             </ConversationButton> */}

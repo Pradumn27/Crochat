@@ -12,7 +12,7 @@ import {SocketContext} from "../../../VideoContext/Context";
 import IncomingCallDialog from '../../../IncomingCall/IncomingCall';
 
 export default function Chat({setRoomId}) {
-    const {setCalling,setCallEnded,call} = useContext(SocketContext)
+    const {setCalling,setCallEnded,setAudioCalling,call} = useContext(SocketContext)
     const [{user,id},]=useStateValue();   
     const [inp,setInp]=useState('');
     const location = useLocation()
@@ -34,6 +34,11 @@ export default function Chat({setRoomId}) {
         setRoomId(friendId);
         setCalling(true);
         setCallEnded(false);
+    }
+
+    const audClick = () =>{
+        setRoomId(friendId);
+        setAudioCalling(true);
     }
     
     const sendMessage = (e) =>{
@@ -64,7 +69,7 @@ export default function Chat({setRoomId}) {
                 <Avatar />
                 <h3>{roomName}</h3>
                 <div className="calls">
-                    <Call/> 
+                    <Call onClick={()=>audClick()} /> 
                     <VideoCall onClick={()=>vidClick()} />
                 </div>
             </div>

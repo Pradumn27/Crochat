@@ -31,6 +31,9 @@ io.on("connection",(socket)=>{
 		io.to(data.to).emit("hangedUp");
 		socket.emit("hangedUp");
 	});
+	socket.on("audioCall",id=>{
+		io.to(id).emit("audioCall");
+	})
 })
 
 server.listen(5000)

@@ -4,17 +4,18 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ChatPage from "./components/ChatPage/ChatPage";
 import Profile from './components/ProfilePage/Profile';
 import Add from "./components/AddPage/Add";
-import Requests from "./components/RequestsPage/Requests"
+import Requests from "./components/RequestsPage/Requests";
 import { useStateValue } from './StateReducer/StateProvider';
 import { actionTypes } from './StateReducer/Reducer';
-import Loading from "./Loading/Loading"
+import Loading from "./Loading/Loading";
 import { SocketContext } from "./VideoContext/Context";
-import db from "./Firebase"
-import VideoAcceptor from "./components/VideoAcceptor/VideoAcceptor"
+import db from "./Firebase";
+import VideoAcceptor from "./components/VideoAcceptor/VideoAcceptor";
 import IncomingCallDialog from './IncomingCall/IncomingCall';
+import AudioAcceptor from "./components/AudioCallAcceptor/AudioAcceptor";
 
 function Routess({ id }) {
-    const { me, call, accepted,callEnded } = useContext(SocketContext);
+    const { me, call, accepted,callEnded,audioCall } = useContext(SocketContext);
     const [, dispatch] = useStateValue();
     const [is, setIs] = useState(true)
     useEffect(() => {
@@ -32,7 +33,7 @@ function Routess({ id }) {
 
     return (
         <>
-            {is ? <Loading /> : !callEnded && accepted ? (<VideoAcceptor />) : (
+            {is ? <Loading />:!callEnded && accepted && audioCall ? (<AudioAcceptor />) : !callEnded && accepted ? (<VideoAcceptor />) : (
                 <>
                     {call?.isReceivingCall && <IncomingCallDialog />}
                     <Router>

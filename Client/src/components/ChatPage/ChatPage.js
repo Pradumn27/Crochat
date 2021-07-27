@@ -5,14 +5,15 @@ import Chat from "./ChatComp/Chat";
 import "./ChatPage.css"
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import VideoCall from "./ChatComp/VideoCall";
+import AudioCall from "./ChatComp/AudioCall";
 import {SocketContext} from "../../VideoContext/Context";
 
 function ChatPage() {
-  const {calling,callEnded} = useContext(SocketContext)
+  const {calling,callEnded,audioCalling} = useContext(SocketContext)
   const [roomId, setRoomId] = useState(null);
   return (
     <>
-      {!callEnded && calling ? <VideoCall  roomId={roomId} /> 
+      {!callEnded && audioCalling ? <AudioCall roomId={roomId} />:!callEnded && calling ? <VideoCall  roomId={roomId} /> 
       :(<div className="main">
         <div className="andar">
           <Header />          
