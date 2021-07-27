@@ -1,10 +1,11 @@
-import React, { createContext, useState, useEffect,useRef } from 'react';
+import React, { createContext, useState, useEffect, useRef } from 'react';
 import { io } from 'socket.io-client';
 import Peer from 'simple-peer';
 
 const SocketContext = createContext();
 
 const socket = io('http://localhost:5000');
+let peerConnection;
 
 const ContextProvider = ({ children }) => {
   const [callAccepted, setCallAccepted] = useState(false);
@@ -14,8 +15,9 @@ const ContextProvider = ({ children }) => {
   const [name, setName] = useState('');
   const [call, setCall] = useState({});
   const [me, setMe] = useState('');
-  const partnerVideo = useRef(); 
-  
+  const partnerVideo = useRef();
+  const [calling, setCalling] = useState(false);
+
   useEffect(() => {
     socket.on('me', (id) => { setMe(id) });
     socket.on('callIncoming', ({ signal, from, name }) => {
@@ -23,9 +25,8 @@ const ContextProvider = ({ children }) => {
     });
   }, []);
 
-  
-
   const callUser = (id) => {
+    setCalling(true);
     navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(currentStream => {
       setStream(currentStream);
       const peer1 = new Peer({ initiator: true, trickle: false, stream: currentStream });
@@ -33,7 +34,7 @@ const ContextProvider = ({ children }) => {
         socket.emit('callUser', { userToCall: id, signalData: data, from: me, name: "dd" });
       });
       peer1.on("stream", stream => {
-        if(partnerVideo.current){
+        if (partnerVideo.current) {
           partnerVideo.current.srcObject = stream;
         }
       })
@@ -41,6 +42,15 @@ const ContextProvider = ({ children }) => {
         peer1.signal(signal);
         setCallAccepted(true);
       });
+      socket.on("rejected", () => {
+        setCalling(false);
+        currentStream.getTracks().forEach(tracks => tracks.stop());
+      })
+      socket.on("hangedUp",()=>{
+        currentStream.getTracks().forEach(tracks=>tracks.stop());
+        setStream(null);
+        setCallEnded(true);
+      })
     });
   };
 
@@ -54,12 +64,19 @@ const ContextProvider = ({ children }) => {
       });
 
       peer2.on('stream', stream => {
-        if(partnerVideo.current){
-        partnerVideo.current.srcObject = stream;
+        if (partnerVideo.current) {
+          partnerVideo.current.srcObject = stream;
         }
       });
 
-      peer2.signal(call.signal);   
+      peer2.signal(call.signal);
+
+      socket.on("hangedUp",()=>{
+        currentStream.getTracks().forEach(tracks=>tracks.stop());
+        setStream(null);
+        setCallEnded(true);
+        setCall({});
+      }) 
     });
   };
 
@@ -84,7 +101,9 @@ const ContextProvider = ({ children }) => {
 
   return (
     <SocketContext.Provider value={{
+      socket,
       call,
+      setCall,
       callAccepted,
       stream,
       name,
@@ -93,6 +112,9 @@ const ContextProvider = ({ children }) => {
       accepted,
       setName,
       callEnded,
+      setCallEnded,
+      calling,
+      setCalling,
       me,
       callUser,
       leaveCall,

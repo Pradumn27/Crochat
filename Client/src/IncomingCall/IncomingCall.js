@@ -3,17 +3,19 @@ import { SocketContext } from '../VideoContext/Context';
 import "./IncomingCall.css"
 
 const IncomingCallDialog = () => {
-  const {answerCall} = useContext(SocketContext);
+  const {socket,answerCall,call,setCall,setCallEnded} = useContext(SocketContext);
   const handleAcceptButtonPressed = () => {
+    setCallEnded(false);
     answerCall();
   };
 
   const handleRejectButtonPressed = () => {
-    // rejectIncomingCallRequest();
+      socket.emit("rejected",({to:call.from}));
+      setCall({});
   };
 
   return (
-    <div className='direct_call_dialog background_secondary_color'>
+    <div className='direct_call_dialog'>
       {/* <span className='direct_call_dialog_caller_name'>{callerUsername}</span> */}
       <div className='direct_call_dialog_button_container'>
         <button className='direct_call_dialog_accept_button' onClick={handleAcceptButtonPressed}>

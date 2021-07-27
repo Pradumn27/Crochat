@@ -14,7 +14,7 @@ import VideoAcceptor from "./components/VideoAcceptor/VideoAcceptor"
 import IncomingCall from "./IncomingCall/IncomingCall"
 
 function Routess({ id }) {
-    const { me, call, accepted } = useContext(SocketContext);
+    const { me, call, accepted,callEnded } = useContext(SocketContext);
     const [, dispatch] = useStateValue();
     const [is, setIs] = useState(true)
     useEffect(() => {
@@ -32,9 +32,9 @@ function Routess({ id }) {
 
     return (
         <>
-            {is ? <Loading /> : accepted ? (<VideoAcceptor />) : (
+            {is ? <Loading /> : !callEnded && accepted ? (<VideoAcceptor />) : (
                 <>
-                    {call.isReceivingCall && <IncomingCall />}
+                    {call?.isReceivingCall && <IncomingCall />}
                     <Router>
                         <Switch>
                             <Route path="/" exact component={Menu} />

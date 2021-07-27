@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useContext} from 'react'
 import EmojiEmotionsOutlinedIcon from '@material-ui/icons/EmojiEmotionsOutlined';
 import { Call, Mic, VideoCall} from '@material-ui/icons';
 import Message from "./Message"
@@ -8,8 +8,10 @@ import { Avatar } from '@material-ui/core';
 import db from "../../../Firebase"
 import firebase from 'firebase';
 import {useStateValue} from "../../../StateReducer/StateProvider";
+import {SocketContext} from "../../../VideoContext/Context";
 
-export default function Chat({setRoomId,receivingCall}) {
+export default function Chat({setRoomId}) {
+    const {setCalling,setCallEnded} = useContext(SocketContext)
     const [{user,id},]=useStateValue();
     const [inp,setInp]=useState('');
     const location = useLocation()
@@ -29,6 +31,8 @@ export default function Chat({setRoomId,receivingCall}) {
 
     const vidClick = () =>{
         setRoomId(friendId);
+        setCalling(true);
+        setCallEnded(false);
     }
     
     const sendMessage = (e) =>{

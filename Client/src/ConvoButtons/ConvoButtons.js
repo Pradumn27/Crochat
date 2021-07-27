@@ -17,8 +17,8 @@ const styles = {
     }
 };
 
-const ConversationButtons = (props) => {
-    const { stream } = useContext(SocketContext)
+const ConversationButtons = ({me,id}) => {
+    const {socket, stream} = useContext(SocketContext)
     const [mic,setMic] = useState(true);
     const [camera,setCamera] = useState(true);
 
@@ -37,7 +37,7 @@ const ConversationButtons = (props) => {
     };
 
     const handleHangUpButtonPressed = () => {
-        // hangUp();
+        socket.emit("hangUp",({me:me,to:id}));
     };
 
     return (

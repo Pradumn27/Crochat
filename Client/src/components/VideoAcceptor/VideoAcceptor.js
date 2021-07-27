@@ -6,7 +6,7 @@ import { SocketContext } from "../../VideoContext/Context";
 import ConversationButtons from '../.././ConvoButtons/ConvoButtons';
 
 function VideoAcceptor() {
-    const { stream, CallingPartnerVideo } = useContext(SocketContext);
+    const { stream,me, CallingPartnerVideo,call } = useContext(SocketContext);
     const myVideo = useRef();
 
     useEffect(() => {
@@ -24,7 +24,7 @@ function VideoAcceptor() {
                     <video className="vid" playsInline muted autoPlay ref={myVideo} />
                     {CallingPartnerVideo}
                 </motion.div>
-                <ConversationButtons />
+                <ConversationButtons me={me} id={call.from}/>
             </div>
         </div>
     )

@@ -7,7 +7,7 @@ import { SocketContext } from '../../../VideoContext/Context';
 import ConversationButtons from '../../../ConvoButtons/ConvoButtons';
 
 function VideoCall({ roomId }) {
-    const { stream, callUser, PartnerVideo } = useContext(SocketContext);
+    const {me, stream, callUser, PartnerVideo } = useContext(SocketContext);
     const myVideo = useRef();
     const [fsi, setFsi] = useState(null);
     useEffect(() => {
@@ -36,7 +36,7 @@ function VideoCall({ roomId }) {
                     <video playsInline autoPlay muted ref={myVideo} className="vid" />
                     {PartnerVideo}
                 </motion.div>
-                <ConversationButtons />
+                {fsi&&<ConversationButtons me={me} id={fsi}/>}
             </div>
         </div>
     )

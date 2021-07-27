@@ -16,16 +16,20 @@ app.get("/",(req,res)=>{
 io.on("connection",(socket)=>{
     socket.emit("me", socket.id);
 
-	socket.on("disconnect", () => {
-		socket.broadcast.emit("callEnded")
-	});
-
 	socket.on("callUser", ({ userToCall, signalData, from, name }) => {
 		io.to(userToCall).emit("callIncoming", { signal: signalData, from, name });
 	});
 
 	socket.on("answerCall", (data) => {
 		io.to(data.to).emit("callAccepted", data.signal)
+	});
+
+	socket.on('rejected', (data)=>{
+        io.to(data.to).emit('rejected');
+    })
+	socket.on("hangUp",(data)=>{
+		io.to(data.to).emit("hangedUp");
+		socket.emit("hangedUp");
 	});
 })
 
