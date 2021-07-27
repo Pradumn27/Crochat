@@ -9,10 +9,11 @@ import db from "../../../Firebase"
 import firebase from 'firebase';
 import {useStateValue} from "../../../StateReducer/StateProvider";
 import {SocketContext} from "../../../VideoContext/Context";
+import IncomingCallDialog from '../../../IncomingCall/IncomingCall';
 
 export default function Chat({setRoomId}) {
-    const {setCalling,setCallEnded} = useContext(SocketContext)
-    const [{user,id},]=useStateValue();
+    const {setCalling,setCallEnded,call} = useContext(SocketContext)
+    const [{user,id},]=useStateValue();   
     const [inp,setInp]=useState('');
     const location = useLocation()
     const { friendId,roomId,friendRoomId } = location.state
@@ -56,6 +57,8 @@ export default function Chat({setRoomId}) {
         setInp("");
     }
     return (
+        <>
+        {call?.isReceivingCall && <IncomingCallDialog />}
         <div className="chat" >
             <div className="chatheader">   
                 <Avatar />
@@ -79,5 +82,6 @@ export default function Chat({setRoomId}) {
                 <Mic/>
             </div>
         </div>
+    </>
     )
 }

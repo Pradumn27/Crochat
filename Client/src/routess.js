@@ -11,7 +11,7 @@ import Loading from "./Loading/Loading"
 import { SocketContext } from "./VideoContext/Context";
 import db from "./Firebase"
 import VideoAcceptor from "./components/VideoAcceptor/VideoAcceptor"
-import IncomingCall from "./IncomingCall/IncomingCall"
+import IncomingCallDialog from './IncomingCall/IncomingCall';
 
 function Routess({ id }) {
     const { me, call, accepted,callEnded } = useContext(SocketContext);
@@ -34,7 +34,7 @@ function Routess({ id }) {
         <>
             {is ? <Loading /> : !callEnded && accepted ? (<VideoAcceptor />) : (
                 <>
-                    {call?.isReceivingCall && <IncomingCall />}
+                    {call?.isReceivingCall && <IncomingCallDialog />}
                     <Router>
                         <Switch>
                             <Route path="/" exact component={Menu} />
