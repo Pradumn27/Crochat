@@ -36,7 +36,7 @@ function VideoCall({ roomId }) {
                     <video playsInline autoPlay muted ref={myVideo} className="vid" />
                     {PartnerVideo}
                 </motion.div>
-                {fsi&&<ConversationButtons me={me} id={fsi}/>}
+                {stream&&<ConversationButtons me={me} id={fsi}/>}
             </div>
         </div>
     )

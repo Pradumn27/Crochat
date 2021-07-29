@@ -24,7 +24,7 @@ function VideoAcceptor() {
                     <video className="vid" playsInline muted autoPlay ref={myVideo} />
                     {CallingPartnerVideo}
                 </motion.div>
-                <ConversationButtons me={me} id={call.from}/>
+                {stream&&<ConversationButtons me={me} id={call.from}/>}
             </div>
         </div>
     )

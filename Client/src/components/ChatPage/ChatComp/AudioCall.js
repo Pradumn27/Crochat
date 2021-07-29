@@ -6,7 +6,7 @@ import {SocketContext} from "../../../VideoContext/Context"
 import ConversationButtons from '../../../ConvoButtons/ConvoButtons';
 
 function AudioCall({roomId}) {
-    const {me,stream,setAudioCall,callUser,audioCall,partnerVideo,PartnerVideo} = useContext(SocketContext)
+    const {me,stream,callUser,PartnerVideo} = useContext(SocketContext)
     const myAudio = useRef();
     const [fsi, setFsi] = useState(null);
     useEffect(() => {
@@ -16,10 +16,7 @@ function AudioCall({roomId}) {
     }, [roomId])
 
     useEffect(()=>{
-        setAudioCall(true);
-    },[])
-    useEffect(()=>{
-        if(fsi&&audioCall){
+        if(fsi){
             callUser(fsi)
         }
     },[fsi])
@@ -39,7 +36,7 @@ function AudioCall({roomId}) {
                     <video playsInline autoPlay muted ref={myAudio} poster="capture.jpg" className="vid" />
                     {PartnerVideo}
                 </motion.div>
-                {fsi&&<ConversationButtons me={me} id={fsi}/>}
+                {stream&&<ConversationButtons me={me} id={fsi}/>}
             </div>
         </div>
     )
