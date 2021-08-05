@@ -35,7 +35,7 @@ function Requests() {
                             <div className="Empty">
                                 <h2 className="emptyText">Whoops!!Looks like you don't have any friend requests at the moment....</h2>
                                 <h4>How about sharing your code below with your friends:</h4>
-                                <div className="invitation">
+                                <div className="invitatio">
                                     <h4>Invitation Code :</h4>
                                     <h3 className={hov ? "hov" : ""} onMouseEnter={() => { setHov(true); }} onMouseLeave={() => { setHov(false) }} onClick={clipped} >{hov ? "copy to clipboard" : id}</h3>
                                 </div>

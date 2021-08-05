@@ -13,11 +13,13 @@ import db from "./Firebase";
 import VideoAcceptor from "./components/VideoAcceptor/VideoAcceptor";
 import IncomingCallDialog from './IncomingCall/IncomingCall';
 import AudioAcceptor from "./components/AudioCallAcceptor/AudioAcceptor";
+import useOnlineStatus from '@rehooks/online-status';;
 
 function Routess({ id }) {
     const { me, call, accepted,callEnded,audioCall } = useContext(SocketContext);
     const [, dispatch] = useStateValue();
     const [is, setIs] = useState(true)
+    const onlineStatus = useOnlineStatus();
     useEffect(() => {
         dispatch({
             type: actionTypes.SET_ID,
@@ -30,6 +32,11 @@ function Routess({ id }) {
             soc: me,
         })
     }, [])
+    useEffect(()=>{
+        db.collection("users").doc(id).update({
+            online:onlineStatus,
+        })
+    },[onlineStatus]);
 
     return (
         <>

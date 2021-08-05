@@ -47,10 +47,10 @@ function Profile() {
                                     <div className="dp">
                                         <h4>Display Picture : </h4>
                                         <div className="dp-in">
-                                            <Avatar src={photo} style={{ height: "90px", width: "90px" }} />
+                                            <Avatar src={photo} style={{ height: "60px", width: "60px" }} />
                                             <h3 className="change">Change your Display Picture</h3>
                                         </div>
-                                    </div>
+                                    </div>  
                                     <div className="dn">
                                         <h4>Display Name : </h4>
                                         <div className="dn-in">

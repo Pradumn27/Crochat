@@ -54,7 +54,7 @@ main h1{
 }
 
 .navbar-nav {
-  list-style: none;
+  list-style: none;  
   padding: 0;
   margin: 0;
   display: flex;
@@ -141,11 +141,22 @@ main h1{
 }
 
 /* Small screens */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 769px) {
   .navbar {
     bottom: 0;
     width: 100vw;
     height: 5rem;
+    transition: none;
+  }
+
+  .navbar-nav{
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nav-item:last-child {
+    margin-top: 0;
+    height: 80px;
   }
 
   .logo {
@@ -162,6 +173,7 @@ main h1{
 
   main {
     margin: 0;
+    height: 93.4vh;
   }
 }
 
@@ -170,7 +182,7 @@ main h1{
 }
 
 /* Large screens */
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 769px) {
   .navbar {
     width: 5rem;
     height: 90vh;
@@ -190,5 +202,22 @@ main h1{
 
   .navbar:hover .logo-text {
     left: 0px;
+  }
+}
+
+@media only screen and (max-width: 680px) {
+  main h1{
+    font-size: 50px;
+  }
+}
+@media only screen and (max-width: 496px) {
+  main h1{
+    font-size: 30px;
+  }
+  main h4{
+    font-size: 10px;
+  }
+  main li{
+    font-size: 10px;
   }
 }

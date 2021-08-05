@@ -18,7 +18,7 @@ const styles = {
 };
 
 const ConversationButtons = ({me,id}) => {
-    const {socket, stream,audioCall} = useContext(SocketContext)
+    const {socket, stream,audioCall,screenSharingActive,shareScreen,stopScreenShare} = useContext(SocketContext)
     const [mic,setMic] = useState(true);
     const [camera,setCamera] = useState(true);
 
@@ -34,26 +34,27 @@ const ConversationButtons = ({me,id}) => {
 
     const handleScreenSharingButtonPressed = () => {
         // switchForScreenSharingStream();
+        shareScreen();
     };
 
     const handleHangUpButtonPressed = () => {
-        socket.emit("hangUp",({me:me,to:id}));
+        socket.emit("hangUp",id);
     };
 
     return (
         <div style={styles.buttonContainer}>
-            <ConversationButton onClickHandler={handleMicButtonPressed}>
+            {!screenSharingActive&&<ConversationButton onClickHandler={handleMicButtonPressed}>
                 {mic ? <MdMic style={styles.icon} /> : <MdMicOff style={styles.icon} />}
-            </ConversationButton>
+            </ConversationButton>}
             <ConversationButton onClickHandler={handleHangUpButtonPressed}>
                 <MdCallEnd style={styles.icon} />
             </ConversationButton>
             {!audioCall && <ConversationButton onClickHandler={handleCameraButtonPressed}>
                 {camera ? <MdVideocam style={styles.icon} /> : <MdVideocamOff style={styles.icon} />}
             </ConversationButton>}
-            {/* <ConversationButton onClickHandler={handleScreenSharingButtonPressed}>
+            {!screenSharingActive&&<ConversationButton onClickHandler={handleScreenSharingButtonPressed}>
                 {screenSharingActive ? <MdCamera style={styles.icon} /> : <MdVideoLabel style={styles.icon} />}
-            </ConversationButton> */}
+            </ConversationButton>}
         </div>
     );
 };

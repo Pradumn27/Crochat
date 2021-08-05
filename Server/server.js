@@ -27,9 +27,9 @@ io.on("connection",(socket)=>{
 	socket.on('rejected', (data)=>{
         io.to(data.to).emit('rejected');
     })
-	socket.on("hangUp",(data)=>{
-		io.to(data.to).emit("hangedUp");
-		io.to(data.me).emit("hangedUp");
+	socket.on("hangUp",(id)=>{
+		io.to(id).emit("hangedUp");
+		socket.emit("hangedUp");
 	});
 	socket.on("audioCall",id=>{
 		io.to(id).emit("audioCall");

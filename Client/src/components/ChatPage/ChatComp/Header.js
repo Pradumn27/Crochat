@@ -5,8 +5,8 @@ import { BsFillSkipBackwardFill } from 'react-icons/bs';
 
 export default function Header() {
     return (
-        <div id="header">
-            <Link to="/" className="back">
+        <div className="header">
+            <Link to="/" className="back">  
                 <div className="anch">
                 <BsFillSkipBackwardFill/>
                 Go Back

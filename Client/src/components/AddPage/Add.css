@@ -60,3 +60,14 @@
 .bn:hover{
     background-color: teal;
 }
+
+.invitation-link>h4{
+    text-align: center;
+}
+
+@media only screen and (max-width: 769px) {
+    .addfr{
+      margin-left: 0;
+      height: 92.2vh;
+    }
+  }  

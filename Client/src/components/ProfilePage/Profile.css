@@ -64,6 +64,8 @@
 
 .data {
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .dp {
@@ -94,7 +96,7 @@
 
 .change {
   font-size: 10px;
-  padding: 10px;
+  padding: 4px;
   cursor: pointer;
 }
 .change:hover{
@@ -161,5 +163,48 @@
   }
   to {
     border-right-color: transparent;
+  }
+}
+
+@media only screen and (max-width: 769px) {
+  .profile{
+    margin-left: 0;
+    height: 94.5vh;
+  }
+  .dp{
+    margin-left: 0;
+  }
+  .dn{
+    margin-left: 0;
+  }
+  .change{
+    font-size: 8px;
+    padding: 1px;
+  }
+  .inpt{
+    font-size: 20px;
+  }
+  .invitation>h4{
+    font-size: 10px;
+  }
+  .line-1{
+    font-size: 23px;
+  }
+}
+
+@media only screen and (max-width: 489px) {
+  .line-1{
+    font-size: 15px;
+  }
+}
+@media only screen and (max-width: 369px) {
+  .line-1{
+    font-size: 13px;
+  }
+}
+
+@media only screen and (max-width: 1286px){
+  .dp>h4,.dn>h4{
+    display: none;
   }
 }
