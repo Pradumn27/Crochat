@@ -1,0 +1,19 @@
+.box {
+  padding: 40px 60px;
+  background: #23272a;
+  width: 100%;
+
+  @media (max-width: 1000px) {
+    padding: 70px 30px;
+  }
+}
+
+.col-sm{
+    color: aqua;
+}
+
+.row>p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
