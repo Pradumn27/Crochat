@@ -9,8 +9,9 @@ function MenuNav() {
     const history = useHistory();
     const logOut = ()=>{
         auth.signOut().then(() => {
+            window.sessionStorage.setItem("app",false);
             history.push("/");
-          }).catch((error) => {
+        }).catch((error) => {
             console.log(error)
           });
     }

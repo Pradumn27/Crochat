@@ -67,7 +67,7 @@ function First() {
                                     <div data-aos="fade-in" data-aos-once="false" className="invites logg">
                                         <h1>So looks interesting?</h1>
                                         <h3>Click on Login Below :)</h3>
-                                        <button className="btnn" onClick={setAppp}>LOGIN</button>
+                                        <h2 className="btnn" onClick={setAppp}>LOGIN</h2>
                                     </div>
                                 </div>
                                 <div className="foo">

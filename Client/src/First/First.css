@@ -110,3 +110,18 @@ nav>h5:hover{
 .logg{
     flex-direction: column;
 }
+
+.btnn{
+    cursor: pointer;
+    color: gray;
+    margin-top: 15px;
+    font-size: 26px;
+    padding: 12px;
+    background-color: aliceblue;
+    border: 1px solid #525a39;
+    border-radius: 30px;
+}
+
+.btnn:hover{
+    background-color: rgb(150, 174, 196);
+}

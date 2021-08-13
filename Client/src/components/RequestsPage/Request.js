@@ -10,7 +10,7 @@ function Request({ idd, docId }) {
     const [{ id, user },] = useStateValue();
     const [name, setName] = useState('');
     const [fri, setFri] = useState('');
-    const [mi, setMi] = useState('');
+    const [mi, setMi] = useState('');  
     const [photo, setPhoto] = useState('');
     useEffect(() => {
         db.collection("users").doc(idd).get().then((doc) => {

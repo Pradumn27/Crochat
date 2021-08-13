@@ -16,7 +16,7 @@ export default function Chat({setRoomId}) {
     const [{user,id},]=useStateValue();   
     const [inp,setInp]=useState('');
     const location = useLocation()
-    const { friendId,roomId,friendRoomId } = location.state
+    const { friendId,roomId,friendRoomId,photo } = location.state
     const [roomName,setRoomName]=useState('');
     const [messages,setMessages]=useState([]);
     useEffect(()=>{
@@ -68,7 +68,7 @@ export default function Chat({setRoomId}) {
         {call?.isReceivingCall && <IncomingCallDialog />}
         <div className="chat" >
             <div className="chatheader">   
-                <Avatar />
+                <Avatar src={photo}/>
                 <h3>{roomName}</h3>
                 <div className="calls">
                     <Call onClick={()=>audClick()} /> 

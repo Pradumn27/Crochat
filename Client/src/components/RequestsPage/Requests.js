@@ -11,10 +11,7 @@ function Requests() {
     const [req, setReq] = useState([]);
     const [hov, setHov] = useState(false);
     const clipped = () => {
-        // For Chrome
         navigator.clipboard.writeText(id);
-        // For Older Browser Versions
-        // window.clipboardData.setData("Text", 123455);
     }
     useEffect(() => {
         if(id){

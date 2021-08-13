@@ -1,11 +1,13 @@
 import { Button } from '@material-ui/core';
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import './Login.css';
 import { auth, provider } from '../Firebase';
 import { actionTypes } from '../StateReducer/Reducer';
 import { useStateValue } from '../StateReducer/StateProvider';
+import First from "../First/First";
 
 function Login() {
+    const [ap,setAp] = useState(true);
     const [, dispatch] = useStateValue();
     const signIn = () => {
         auth.setPersistence('session').then(() => {
@@ -19,7 +21,16 @@ function Login() {
                 .catch((error) => alert(error.message))
         });
     }
+    useEffect(()=>{
+        if(window.sessionStorage.getItem("app")){
+          setAp(true);
+        }
+        else{
+          setAp(false);
+        }
+      },[])
     return (
+        <>{ap?(
         <div className="login">
             <div className="login_container">
                 <div className="login_text">
@@ -27,7 +38,9 @@ function Login() {
                 </div>
                 <Button type="submit" onClick={signIn}>Sign in With Google</Button>
             </div>
-        </div>
+        </div>):<First />
+        }
+        </>
     );
 }
 
