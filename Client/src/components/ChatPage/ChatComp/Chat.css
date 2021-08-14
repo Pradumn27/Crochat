@@ -39,7 +39,9 @@
     background-color: #f6f6f6;
 }
 
-
+.chatfooter>.MuiSvgIcon-root{
+    cursor: pointer;
+}
 
 .chatfooter>form>.inp{
     margin-left: 10px;

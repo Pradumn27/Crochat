@@ -1,6 +1,6 @@
 import React,{useState,useEffect,useContext} from 'react'
+import { Call, VideoCall} from '@material-ui/icons';
 import EmojiEmotionsOutlinedIcon from '@material-ui/icons/EmojiEmotionsOutlined';
-import { Call, Mic, VideoCall} from '@material-ui/icons';
 import Message from "./Message"
 import "./Chat.css"
 import {useLocation} from "react-router-dom";
@@ -10,6 +10,8 @@ import firebase from 'firebase';
 import {useStateValue} from "../../../StateReducer/StateProvider";
 import {SocketContext} from "../../../VideoContext/Context";
 import IncomingCallDialog from '../../../IncomingCall/IncomingCall';
+import 'emoji-mart/css/emoji-mart.css'
+import { Picker } from 'emoji-mart'
 
 export default function Chat({setRoomId}) {
     const {setCalling,setAudioCall,setCallEnded,setAudioCalling,call} = useContext(SocketContext)
@@ -19,6 +21,17 @@ export default function Chat({setRoomId}) {
     const { friendId,roomId,friendRoomId,photo } = location.state
     const [roomName,setRoomName]=useState('');
     const [messages,setMessages]=useState([]);
+    const [showEmoji,setShowEmoji] = useState(false);
+
+    const addEmoji = (e) => {
+        let sym = e.unified.split('-')
+        let codesArray = []
+        sym.forEach(el => codesArray.push('0x' + el))
+        let emoji = String.fromCodePoint(...codesArray)
+        setInp(inp+emoji)
+        setShowEmoji(false)
+    };
+
     useEffect(()=>{
         if(roomId){
             db.collection("users").doc(id).collection("chats").doc(roomId).onSnapshot(snapShot=>{
@@ -81,12 +94,12 @@ export default function Chat({setRoomId}) {
                 )})}
             </div>
             <div className="chatfooter">
-                <EmojiEmotionsOutlinedIcon/>
-                <form>
+                {showEmoji?
+                <Picker onSelect={addEmoji} />: <EmojiEmotionsOutlinedIcon onClick={()=>setShowEmoji(true)}/>
+                }<form>
                 <input className="inp" placeholder="type message..." value={inp} onChange={(e)=>{setInp(e.target.value)}} type="text"></input>
                 <button className="but" onClick={sendMessage} type="submit"> Send a Message</button>
                 </form>
-                <Mic/>
             </div>
         </div>
     </>
