@@ -5,15 +5,18 @@ import MenuNav from '../MainMenu/MenuNav'
 import "./Profile.css"
 import { useStateValue } from "../../StateReducer/StateProvider"
 import db from "../../Firebase"
+import ProgressBar from "./ProgressBar"
 
 function Profile() {
     const [{ user, id },] = useStateValue();
     const [dis, setDis] = useState(false);
-    const [name, setName] = useState(user.displayName);
+    const [name, setName] = useState();
     const [hov, setHov] = useState(false);
     const [hove, setHove] = useState(false);
     const [photo, setPhoto] = useState(user.photoURL);
     const [chats, setChats] = useState({});
+    const [file, setFile] = useState();
+    const [error, setError] = useState();
     useEffect(() => {
         db.collection("users").doc(id).collection("chats").onSnapshot((snapshot) =>
             setChats(
@@ -23,23 +26,25 @@ function Profile() {
                 }))
             )
         )
+        db.collection("users").doc(id).get().then((doc) => {
+            if (doc.exists) {
+                setName(doc.data().name);
+                setPhoto(doc.data().photoUrl);
+            }
+        })
         setTimeout(() => {
             setDis(true);
         }, 2200);
 
-
     }, []);
-    useEffect(() => {
-        setPhoto(user.photoURL);
-    }, [user.photoURL])
     const changeName = (e) => {
         e.preventDefault();
         db.collection('users').doc(id).update({
             name: name,
         })
-        chats.map((chat)=>{
+        chats.map((chat) => {
             db.collection("users").doc(chat.data.friend).collection("chats").doc(chat.data.friendRoomId).update({
-                name:name,
+                name: name,
             })
         })
     }
@@ -48,6 +53,19 @@ function Profile() {
         navigator.clipboard.writeText(id);
         // For Older Browser Versions
         // window.clipboardData.setData("Text", 123455);
+    }
+
+    const types = ['image/png', 'image/jpeg'];
+
+    const onImageChange = (e) => {
+        let selected = e.target.files[0];
+        if (selected && types.includes(selected.type)) {
+            setFile(selected);
+            setError('');
+        } else {
+            setFile(null);
+            setError('Please select an image file (png or jpg)');
+        }
     }
 
     return (
@@ -64,7 +82,14 @@ function Profile() {
                                         <h4>Display Picture : </h4>
                                         <div className="dp-in">
                                             <Avatar src={photo} style={{ height: "60px", width: "60px" }} />
-                                            {/* <input type="file" className="change" onChange={onImageChange}></input> */}
+                                            <label>
+                                            <input type="file" className="change" onChange={(e) => onImageChange(e)}></input>
+                                            <span>Change Display Pic</span>
+                                            <div className="output">
+                                                {error && <div className="error">{error}</div>}
+                                                {file && <ProgressBar setPhoto={setPhoto} friends={chats} id={id} file={file} setFile={setFile} />}
+                                            </div>
+                                            </label>
                                         </div>
                                     </div>
                                     <div className="dn">

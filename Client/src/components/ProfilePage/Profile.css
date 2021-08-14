@@ -149,6 +149,40 @@
   display: none;
 }
 
+label input{
+  height: 0;
+  width: 0;
+  opacity: 0;
+}
+
+label{
+  display: block;
+  width: 116px;
+  height: 20px;
+  margin:5px;
+  color: #9b9bb7;
+  font-weight: bold;
+}
+
+label>span{
+  cursor: pointer;
+  font-size: 10px;
+}
+label>span:hover{
+  border-bottom: 1px solid wheat;
+}
+
+.progress-bar{
+  height: 5px;
+  background: #9b9bb7;
+  margin-top: 20px;
+}
+
+.output{
+  height: 60px;
+  font-size: 0.8rem;
+}
+
 @keyframes typewriter {
   0% {
     width: 0;

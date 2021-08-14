@@ -23,6 +23,7 @@ export default function SideChat({ roomId, friendId, name, photo, friendRoomId }
                 friendId: friendId,
                 friendRoomId: friendRoomId,
                 roomId: roomId,
+                photo:photo,
             }
         }} >
             <div className="sidechat">
