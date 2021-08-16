@@ -4,24 +4,20 @@ import Peer from 'simple-peer';
 
 const SocketContext = createContext();
 
-const socket = io('http://localhost:5000');
+const socket = io('https://crochat.herokuapp.com/');
 
 const ContextProvider = ({ children }) => {
   const [callAccepted, setCallAccepted] = useState(false);
   const [accepted, setAccepted] = useState(false);
-  const [scrrenSharingActive, setScreenSharingActive] = useState(false);
   const [stream, setStream] = useState();
   const [name, setName] = useState('');
   const [call, setCall] = useState({});
   const [me, setMe] = useState('');
   const partnerVideo = useRef();
-  const peerRef = useRef();
   const [callEnded,setCallEnded] = useState(true);
-  const userStream = useRef();
   const [calling, setCalling] = useState(false);
   const [audioCalling, setAudioCalling] = useState(false);
   const [audioCall, setAudioCall] = useState(false);
-  let peeer; 
 
   useEffect(() => {
     socket.on('me', (id) => { setMe(id) });
@@ -116,10 +112,8 @@ const ContextProvider = ({ children }) => {
         })
 
         socket.on("hangedUp", () => {
-          // peer.destroy();
           setCallEnded(true);
           currentStream.getTracks().forEach(tracks => tracks.stop());
-          // setStream(null);
           setCalling(false);
           setAudioCall(false);
           setAudioCalling(false);
@@ -134,20 +128,6 @@ const ContextProvider = ({ children }) => {
       }
     });
   };
-
-  const shareScreen = () => {
-    // setScreenSharingActive(true);
-    // navigator.mediaDevices.getDisplayMedia({ cursor: true }).then(mystream => {
-    //   setBasic(stream);
-    //   if(partnerVideo.current){
-    //   partnerVideo.current.srcObject = stream;}
-    //   setStream(mystream);   
-      // const screenTrack = stream.getTracks()[0];
-      // senders.current[1].replaceTrack(screenTrack);
-      // screenTrack.onended = function () {
-      //   senders.current[1].replaceTrack(userStream.current.getTracks()[1]);
-      // }
-  }
 
   let PartnerVideo;
   if (callAccepted) {
@@ -187,9 +167,6 @@ const ContextProvider = ({ children }) => {
       setCallEnded,
       callUser,
       answerCall,
-      scrrenSharingActive,
-      shareScreen,
-      // stopScreenShare
     }}
     >
       {children}

@@ -32,7 +32,7 @@ function First() {
                                     </nav>
                                     <div className="body">
                                         <h1>HOW WOULD YOU LIKE TO...</h1>
-                                        <h3>Talk to your friends, call them from the browser or even video call them or how about sharing your screen as well here's your one-stop solution.</h3>
+                                        <h3>Talk to your friends, call them from the browser or even video call them here's your one-stop solution.</h3>
                                         <a className="butn" href="#" onClick={setAppp}>Open in browser</a>
                                     </div>
                                 </div>
