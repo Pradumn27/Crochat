@@ -18,10 +18,10 @@
 ## How to setup the environment:
 - Clone the repository on your system
 - cd in the Client directory
-- run ```npm init```
+- run ```npm install```
 - run ```npm i && npm start``` 
 - cd in the Server directory
-- run ```npm init```
+- run ```npm install```
 - run ```npm i && npm start``` 
 - visit localhost:3000 in your browser
 
